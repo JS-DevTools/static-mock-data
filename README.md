@@ -2,43 +2,80 @@ Mock Data
 ============================
 #### Mock data for sample apps, demos, and POCs
 
+[![Build Status](https://img.shields.io/travis/BigstickCarpet/mock-data.svg)](https://travis-ci.org/BigstickCarpet/mock-data)
+[![Dependencies](https://img.shields.io/david/BigstickCarpet/mock-data.svg)](https://david-dm.org/BigstickCarpet/mock-data)
+[![Coverage Status](https://img.shields.io/coveralls/BigstickCarpet/mock-data.svg)](https://coveralls.io/r/BigstickCarpet/mock-data)
+[![Inline docs](http://inch-ci.org/github/bigstickcarpet/mock-data.svg?branch=master&style=shields)](http://inch-ci.org/github/bigstickcarpet/mock-data)
+
 [![npm](http://img.shields.io/npm/v/@bigstickcarpet/mock-data.svg)](https://www.npmjs.com/package/@bigstickcarpet/mock-data)
+[![Bower](http://img.shields.io/bower/v/mock-data.svg)](#bower)
 [![License](https://img.shields.io/npm/l/@bigstickcarpet/mock-data.svg)](LICENSE)
 
 
 Features
 --------------------------
 * No dependencies
+* Supports Node.js and all web browsers
 * 100 mock employees, with names, addresses, phone numbers, etc.
 * 100 mock projects, with names, dates, departments, employees assigned, etc.
 * Full-size and thumbnail photos for each employee
 
 
-Installation
+Installation &amp; Usage
 --------------------------
+
+### Node
 Install via [NPM](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ````bash
 npm install @bigstickcarpet/mock-data
 ````
 
+The mock data can be used as plain JSON or as JavaScript arrays of objects.
 
-Usage
---------------------------
-The mock data can be used as plain JSON files or as JavaScript arrays of objects.
-
+##### Raw JSON
 ```javascript
-// Raw JSON data
 var employeeJSON = require('mock-data/employees.json');
 employeeJSON.forEach(function(employee) {
   console.log(employee.dob);    // string (in ISO 8601 zulu format)
 });
+```
 
-// JavaScript objects
+##### JavaScript Objects
+```javascript
 var mockData = require('mock-data');
 mockData.employees.forEach(function(employee) {
   console.log(employee.dob);    // Date object
 });
+```
+
+### Web Browsers
+Install via [Bower](http://bower.io):
+
+````bash
+bower install mock-data
+````
+
+The mock data can be used as plain JSON (via [`jQuery.getJSON()`](https://api.jquery.com/jquery.getjson/)) or as JavaScript arrays of objects.
+
+##### Raw JSON
+```javascript
+$.getJSON("bower_components/mock-data/employees.json", function(employeeJSON) {
+  employeeJSON.forEach(function(employee) {
+    console.log(employee.dob);    // string (in ISO 8601 zulu format)
+  });
+});
+```
+
+
+##### JavaScript Objects
+```html
+<script src="bower_components/mock-data/dist/mock-data.min.js"></script>
+<script>
+  mock.data.employees.forEach(function(employee) {
+    console.log(employee.dob);    // Date object
+  });
+</script>
 ```
 
 
