@@ -1,19 +1,18 @@
 'use strict';
 
-var json   = require('../employees.json'),
-    data   = require('../'),
-    _      = require('lodash'),
-    fs     = require('fs'),
-    path   = require('path'),
-    expect = require('chai').expect;
+require('./helper.js');
+var fs   = require('fs'),
+    path = require('path');
 
 describe('employees', function() {
   it('should be two separate data sources', function() {
-    expect(data.employees).not.to.equal(json);
+    expect(mock.data.employees).not.to.equal(json.data.employees);
   });
 
-  [json, data.employees].forEach(function(employees) {
-    describe(employees === json ? 'JSON' : 'JavaScript', function() {
+  [json.data.employees, mock.data.employees].forEach(function(employees) {
+    var isJSON = employees === json.data.employees;
+
+    describe(isJSON ? 'JSON' : 'JavaScript', function() {
       it('should have 102 employees', function() {
         expect(employees).to.have.lengthOf(102);
       });
@@ -51,8 +50,8 @@ describe('employees', function() {
           expect(employee.name.first).to.be.a('string').and.not.empty;
           expect(employee.name.last).to.be.a('string').and.not.empty;
           expect(employee.gender).to.be.a('string').and.match(/^male|female$/);
-          expect(employee.portrait).to.be.a('string').and.match(new RegExp('portraits\/' + employee.username + '\.jpg$'));
-          expect(employee.thumbnail).to.be.a('string').and.match(new RegExp('portraits\/' + employee.username + '-thumb\.jpg$'));
+          expect(employee.portrait).to.be.a('string').and.not.empty;
+          expect(employee.thumbnail).to.be.a('string').and.not.empty;
           expect(employee.email).to.be.a('string').and.not.empty;
           expect(employee.address.street).to.be.a('string').and.not.empty;
           expect(employee.address.city).to.be.a('string').and.not.empty;
@@ -63,7 +62,7 @@ describe('employees', function() {
           expect(employee.department).to.be.a('string').and.match(/^Accounting|Sales|Human Resources|Marketing$/);
           expect(employee.roles).to.be.an('array').and.have.length.above(0);
 
-          if (employees === json) {
+          if (isJSON) {
             expect(employee.dob).to.be.a('string').and.not.empty;
             expect(employee.hiredOn).to.be.a('string').and.not.empty;
             if (employee.terminatedOn !== null) {
@@ -91,17 +90,23 @@ describe('employees', function() {
 
       it('should have the correct paths to portrait images', function() {
         employees.forEach(function(employee) {
-          if (employees === json) {
-            expect(path.isAbsolute(employee.portrait)).to.be.false;
-            expect(path.isAbsolute(employee.thumbnail)).to.be.false;
+          if (isNode) {
+            if (isJSON) {
+              expect(employee.portrait).not.to.satisfy(path.isAbsolute);
+              expect(employee.thumbnail).not.to.satisfy(path.isAbsolute);
+            }
+            else {
+              expect(employee.portrait).to.satisfy(path.isAbsolute);
+              expect(employee.thumbnail).to.satisfy(path.isAbsolute);
+            }
+
+            expect(fs.existsSync(employee.portrait)).to.be.true;
+            expect(fs.existsSync(employee.thumbnail)).to.be.true;
           }
           else {
-            expect(path.isAbsolute(employee.portrait)).to.be.true;
-            expect(path.isAbsolute(employee.thumbnail)).to.be.true;
+            expect(employee.portrait).to.equal('portraits/' + employee.username + '.jpg');
+            expect(employee.thumbnail).to.equal('portraits/' + employee.username + '-thumb.jpg');
           }
-
-          expect(fs.existsSync(employee.portrait)).to.be.true;
-          expect(fs.existsSync(employee.thumbnail)).to.be.true;
         });
       });
 

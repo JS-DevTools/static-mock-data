@@ -1,17 +1,16 @@
 'use strict';
 
-var json   = require('../projects.json'),
-    data   = require('../'),
-    _      = require('lodash'),
-    expect = require('chai').expect;
+require('./helper.js');
 
 describe('projects', function() {
   it('should be two separate data sources', function() {
-    expect(data.projects).not.to.equal(json);
+    expect(mock.data.projects).not.to.equal(json.data.projects);
   });
 
-  [json, data.projects].forEach(function(projects) {
-    describe(projects === json ? 'JSON' : 'JavaScript', function() {
+  [json.data.projects, mock.data.projects].forEach(function(projects) {
+    var isJSON = projects === json.data.projects;
+
+    describe(isJSON ? 'JSON' : 'JavaScript', function() {
       it('should have 100 projects', function() {
         expect(projects).to.have.lengthOf(100);
       });
@@ -40,7 +39,7 @@ describe('projects', function() {
           expect(project.department).to.be.a('string').and.match(/^Accounting|Sales|Human Resources|Marketing$/);
           expect(project.assigned).to.be.an('array').and.have.length.above(0);
 
-          if (projects === json) {
+          if (isJSON) {
             expect(project.startedOn).to.be.a('string').and.not.empty;
             if (project.endedOn !== null) {
               expect(project.endedOn).to.be.a('string').and.not.empty;
@@ -62,7 +61,7 @@ describe('projects', function() {
       it('should only have employees from the same department', function() {
         projects.forEach(function(project) {
           project.assigned.forEach(function(username) {
-            var employee = _.find(data.employees, {username: username});
+            var employee = _.find(mock.data.employees, {username: username});
             expect(employee.department).to.equal(project.department);
           });
         });
@@ -71,7 +70,7 @@ describe('projects', function() {
       it('should only have employees that were employed during the project timeframe', function() {
         projects.forEach(function(project) {
           project.assigned.forEach(function(username) {
-            var employee = _.find(data.employees, {username: username});
+            var employee = _.find(mock.data.employees, {username: username});
 
             if (project.endedOn !== null) {
               var hired = new Date(employee.hiredOn);

@@ -1,0 +1,29 @@
+{
+  "name": "mock-data",
+  "version": "2.0.1",
+  "description": "Mock data for sample apps, demos, and POCs",
+  "keywords": [
+    "mock data"
+  ],
+  "authors": [
+    {
+      "name": "James Messinger",
+      "homepage": "http://bigstickcarpet.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BigstickCarpet/mock-data",
+  "main": "dist/mock-data.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/mock-data.git"
+  },
+  "ignore": [
+    "/bower_components",
+    "/tests",
+    "/lib",
+    "/.*",
+    "karma.conf.js"
+  ],
+  "dependencies": {}
+}
