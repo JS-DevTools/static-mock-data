@@ -4,6 +4,12 @@ require('./helper.js');
 var fs   = require('fs'),
     path = require('path');
 
+// Polyfill for `path.isAbsolute()` on Node 0.10
+path.isAbsolute = path.isAbsolute || function(file) {
+    return file.substr(0, 1) === '/' ||
+      file.substr(1, 2) === ':\\';
+};
+
 describe('employees', function() {
   it('should be two separate data sources', function() {
     expect(mock.data.employees).not.to.equal(json.data.employees);
