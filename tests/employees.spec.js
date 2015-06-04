@@ -1,8 +1,8 @@
 'use strict';
 
 require('./helper.js');
-var fs   = require('fs'),
-    path = require('path');
+var fs   = require('fs') || {},
+    path = require('path') || {};
 
 // Polyfill for `path.isAbsolute()` on Node 0.10
 path.isAbsolute = path.isAbsolute || function(file) {
