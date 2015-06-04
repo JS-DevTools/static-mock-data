@@ -6,4 +6,6 @@
 **/.DS_Store
 npm-debug.log
 /.idea
+/bower_components
+/coverage
 /node_modules
