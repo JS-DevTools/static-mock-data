@@ -2,32 +2,53 @@
   "name": "@bigstickcarpet/mock-data",
   "version": "2.0.1",
   "description": "Mock data for sample apps, demos, and POCs",
-  "category": "Platform Tools",
-  "keywords": [],
+  "keywords": [
+    "mock data"
+  ],
   "author": {
     "name": "James Messinger",
     "url": "http://bigstickcarpet.com"
+  },
+  "license": "(MIT OR CC-BY-NC-SA-4.0)",
+  "homepage": "https://github.com/BigstickCarpet/mock-data",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "jshint . --verbose && jscs . --verbose && npm run browserify",
+    "browserify": "browserify . --standalone mock.data -o dist/mock-data.js && browserify -g uglifyify . --standalone mock.data -o dist/mock-data.min.js",
+    "test": "istanbul cover _mocha -- --recursive tests && npm run karma",
+    "mocha": "mocha --recursive tests",
+    "karma": "karma start --single-run",
+    "update-deps": "npm-check-updates -u && npm update",
+    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/mock-data.git"
   },
-  "license": "(MIT OR CC-BY-NC-SA-4.0)",
-  "homepage": "https://github.com/BigstickCarpet/mock-data",
-  "main": "index.js",
-  "scripts": {
-    "build": "jshint . --verbose && jscs . --verbose",
-    "test": "mocha --recursive tests",
-    "update-deps": "npm-check-updates -u && npm update",
-    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
-  },
   "devDependencies": {
-    "chai": "^2.3.0",
+    "browserify": "^10.2.3",
+    "chai": "^3.0.0",
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.14",
+    "jquery": "^2.1.4",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
+    "karma": "^0.12.36",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-cli": "0.0.4",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-sinon": "^1.0.4",
     "lodash": "^3.9.3",
     "mocha": "^2.2.5",
     "npm-check-updates": "^1.5.1",
+    "sinon": "^1.14.1",
+    "uglifyify": "^3.0.1",
     "version-bump-prompt": "^1.3.1"
   },
   "dependencies": {}

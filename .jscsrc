@@ -1,5 +1,6 @@
 {
   "excludeFiles": [
+    "dist/**",
     "node_modules/**"
   ],
   "requireCurlyBraces": [

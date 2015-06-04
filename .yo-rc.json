@@ -2,7 +2,7 @@
   "@bigstickcarpet/generator-npm": {
     "env": {
       "node": true,
-      "browser": false,
+      "browser": true,
       "yeoman": false,
       "cordova": false
     },
