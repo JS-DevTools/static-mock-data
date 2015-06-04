@@ -35,7 +35,7 @@ The mock data can be used as plain JSON or as JavaScript arrays of objects.
 
 ##### Raw JSON
 ```javascript
-var employeeJSON = require('mock-data/employees.json');
+var employeeJSON = require('@bigstickcarpet/mock-data/employees.json');
 employeeJSON.forEach(function(employee) {
   console.log(employee.dob);    // string (in ISO 8601 zulu format)
 });
@@ -43,7 +43,7 @@ employeeJSON.forEach(function(employee) {
 
 ##### JavaScript Objects
 ```javascript
-var mockData = require('mock-data');
+var mockData = require('@bigstickcarpet/mock-data');
 mockData.employees.forEach(function(employee) {
   console.log(employee.dob);    // Date object
 });
