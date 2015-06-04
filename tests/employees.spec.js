@@ -6,8 +6,8 @@ var fs   = require('fs'),
 
 // Polyfill for `path.isAbsolute()` on Node 0.10
 path.isAbsolute = path.isAbsolute || function(file) {
-    return file.substr(0, 1) === '/' ||
-      file.substr(1, 2) === ':\\';
+  return file.substr(0, 1) === '/' ||
+    file.substr(1, 2) === ':\\';
 };
 
 describe('employees', function() {
