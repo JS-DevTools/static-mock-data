@@ -51,8 +51,8 @@ describe('employees', function() {
           expect(employee.name.first).to.be.a('string').and.not.empty;
           expect(employee.name.last).to.be.a('string').and.not.empty;
           expect(employee.gender).to.be.a('string').and.match(/^male|female$/);
-          expect(employee.portrait).to.be.a('string').and.equal('portraits/' + employee.username + '.jpg');
-          expect(employee.thumbnail).to.be.a('string').and.equal('portraits/' + employee.username + '-thumb.jpg');
+          expect(employee.portrait).to.be.a('string').and.match(new RegExp('portraits\/' + employee.username + '\.jpg$'));
+          expect(employee.thumbnail).to.be.a('string').and.match(new RegExp('portraits\/' + employee.username + '-thumb\.jpg$'));
           expect(employee.email).to.be.a('string').and.not.empty;
           expect(employee.address.street).to.be.a('string').and.not.empty;
           expect(employee.address.city).to.be.a('string').and.not.empty;
@@ -91,11 +91,17 @@ describe('employees', function() {
 
       it('should have the correct paths to portrait images', function() {
         employees.forEach(function(employee) {
-          var portrait = path.resolve(__dirname, '..', employee.portrait);
-          expect(fs.existsSync(portrait)).to.be.true;
+          if (employees === json) {
+            expect(path.isAbsolute(employee.portrait)).to.be.false;
+            expect(path.isAbsolute(employee.thumbnail)).to.be.false;
+          }
+          else {
+            expect(path.isAbsolute(employee.portrait)).to.be.true;
+            expect(path.isAbsolute(employee.thumbnail)).to.be.true;
+          }
 
-          var thumbnail = path.resolve(__dirname, '..', employee.thumbnail);
-          expect(fs.existsSync(thumbnail)).to.be.true;
+          expect(fs.existsSync(employee.portrait)).to.be.true;
+          expect(fs.existsSync(employee.thumbnail)).to.be.true;
         });
       });
 

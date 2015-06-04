@@ -1,13 +1,14 @@
 'use strict';
 
 var employees = require('./employees.json'),
-    projects  = require('./projects.json');
+    projects  = require('./projects.json'),
+    path      = require('path');
 
 /**
  * An array of employee objects with username, password, email, etc.
  * @type {object[]}
  */
-module.exports.employees = cloneJSON(employees, ['dob', 'hiredOn', 'terminatedOn']);
+module.exports.employees = absolutePaths(cloneJSON(employees, ['dob', 'hiredOn', 'terminatedOn']));
 
 /**
  * An array of project objects with id, name, department, etc.
@@ -39,4 +40,17 @@ function cloneJSON(json, dateFields) {
   });
 
   return results;
+}
+
+/**
+ * Makes the image paths absolute.
+ * @param {object[]} employees
+ */
+function absolutePaths(employees) {
+  employees.forEach(function(employee) {
+    employee.portrait = path.resolve(__dirname, employee.portrait);
+    employee.thumbnail = path.resolve(__dirname, employee.thumbnail);
+  });
+
+  return employees;
 }
