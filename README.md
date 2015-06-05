@@ -114,7 +114,7 @@ Projects
 
 | Property              | Data Type        | Description
 |:----------------------|:-----------------|:----------------------------
-| `id`                  | string           | Numeric ID that is unique for each project
+| `id`                  | number           | Numeric ID that is unique for each project
 | `name`                | string           | Project name that is unique for each project. 55 characters max.
 | `description`         | string           | Long project description. 2000 characters max
 | `department`          | string           | "Accounting", "Sales", "Human Resources", or "Marketing"

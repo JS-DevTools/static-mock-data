@@ -33,7 +33,7 @@ describe('projects', function() {
 
       it('should have valid data types for all fields', function() {
         projects.forEach(function(project) {
-          expect(project.id).to.be.a('string').and.match(/^\d+$/);
+          expect(project.id).to.be.a('number').above(1000);
           expect(project.name).to.be.a('string').and.have.length.above(20).and.below(56);
           expect(project.description).to.be.a('string').and.have.length.above(200).and.below(2000);
           expect(project.department).to.be.a('string').and.match(/^Accounting|Sales|Human Resources|Marketing$/);
