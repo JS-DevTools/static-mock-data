@@ -9,3 +9,4 @@ npm-debug.log
 /bower_components
 /coverage
 /node_modules
+/dist/*.test.js
