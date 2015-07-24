@@ -2,9 +2,9 @@ Mock Data
 ============================
 #### Mock data for sample apps, demos, and POCs
 
-[![Build Status](https://img.shields.io/travis/BigstickCarpet/mock-data.svg)](https://travis-ci.org/BigstickCarpet/mock-data)
-[![Dependencies](https://img.shields.io/david/BigstickCarpet/mock-data.svg)](https://david-dm.org/BigstickCarpet/mock-data)
-[![Coverage Status](https://img.shields.io/coveralls/BigstickCarpet/mock-data.svg)](https://coveralls.io/r/BigstickCarpet/mock-data)
+[![Build Status](https://api.travis-ci.org/BigstickCarpet/mock-data.svg)](https://travis-ci.org/BigstickCarpet/mock-data)
+[![Dependencies](https://david-dm.org/BigstickCarpet/mock-data.svg)](https://david-dm.org/BigstickCarpet/mock-data)
+[![Coverage Status](https://coveralls.io/repos/BigstickCarpet/mock-data/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/mock-data)
 [![Inline docs](http://inch-ci.org/github/bigstickcarpet/mock-data.svg?branch=master&style=shields)](http://inch-ci.org/github/bigstickcarpet/mock-data)
 
 [![npm](http://img.shields.io/npm/v/@bigstickcarpet/mock-data.svg)](https://www.npmjs.com/package/@bigstickcarpet/mock-data)
@@ -19,6 +19,12 @@ Features
 * 100 mock employees, with names, addresses, phone numbers, etc.
 * 100 mock projects, with names, dates, departments, employees assigned, etc.
 * Full-size and thumbnail photos for each employee
+* All data follows logical rules:
+    - Usernames, SSNs, addresses, etc. are unique
+    - Birthdates, hire dates, and termination dates are in proper chronological order
+    - Employee roles "make sense" (e.g. "full time" and "part time" are mutually exclusive)
+    - Employees are only assigned to projects in their own department
+    - Employees are only assigned to projects that occurred during their employment
 
 
 Installation &amp; Usage
