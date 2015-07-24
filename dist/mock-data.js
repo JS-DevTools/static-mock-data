@@ -3875,6 +3875,69 @@ module.exports=[
   }
 ]
 },{}],2:[function(require,module,exports){
+(function (process,__dirname){
+'use strict';
+
+var employees = require('../employees.json'),
+    projects  = require('../projects.json'),
+    path      = require('path');
+
+/**
+ * An array of employee objects with username, password, email, etc.
+ * @type {object[]}
+ */
+module.exports.employees = absolutePaths(cloneJSON(employees, ['dob', 'hiredOn', 'terminatedOn']));
+
+/**
+ * An array of project objects with id, name, department, etc.
+ * @type {object[]}
+ */
+module.exports.projects = cloneJSON(projects, ['startedOn', 'endedOn']);
+
+/**
+ * Clones raw JSON data, converting date strings to Date objects.
+ * @param {object[]} json
+ * @param {string[]} dateFields
+ * @returns {object[]}
+ */
+function cloneJSON(json, dateFields) {
+  var results = [];
+
+  json.forEach(function(obj) {
+    var clone = {};
+    results.push(clone);
+
+    Object.keys(obj).forEach(function(key) {
+      if (typeof(obj[key]) === 'string' && dateFields.indexOf(key) >= 0) {
+        clone[key] = new Date(obj[key]);
+      }
+      else {
+        clone[key] = obj[key];
+      }
+    });
+  });
+
+  return results;
+}
+
+/**
+ * Makes the image paths absolute.
+ * @param {object[]} employees
+ */
+function absolutePaths(employees) {
+  if (!process.browser) {
+    employees.forEach(function(employee) {
+      employee.portrait = path.resolve(__dirname, '..', employee.portrait);
+      employee.thumbnail = path.resolve(__dirname, '..', employee.thumbnail);
+    });
+  }
+
+  return employees;
+}
+
+}).call(this,require('_process'),"/lib")
+
+},{"../employees.json":1,"../projects.json":5,"_process":4,"path":3}],3:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4102,7 +4165,8 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":3}],3:[function(require,module,exports){
+
+},{"_process":4}],4:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -4194,7 +4258,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports=[
   {
     "id": 892281,
@@ -5859,67 +5923,6 @@ module.exports=[
   }
 ]
 
-},{}],5:[function(require,module,exports){
-(function (process,__dirname){
-'use strict';
-
-var employees = require('../employees.json'),
-    projects  = require('../projects.json'),
-    path      = require('path');
-
-/**
- * An array of employee objects with username, password, email, etc.
- * @type {object[]}
- */
-module.exports.employees = absolutePaths(cloneJSON(employees, ['dob', 'hiredOn', 'terminatedOn']));
-
-/**
- * An array of project objects with id, name, department, etc.
- * @type {object[]}
- */
-module.exports.projects = cloneJSON(projects, ['startedOn', 'endedOn']);
-
-/**
- * Clones raw JSON data, converting date strings to Date objects.
- * @param {object[]} json
- * @param {string[]} dateFields
- * @returns {object[]}
- */
-function cloneJSON(json, dateFields) {
-  var results = [];
-
-  json.forEach(function(obj) {
-    var clone = {};
-    results.push(clone);
-
-    Object.keys(obj).forEach(function(key) {
-      if (typeof(obj[key]) === 'string' && dateFields.indexOf(key) >= 0) {
-        clone[key] = new Date(obj[key]);
-      }
-      else {
-        clone[key] = obj[key];
-      }
-    });
-  });
-
-  return results;
-}
-
-/**
- * Makes the image paths absolute.
- * @param {object[]} employees
- */
-function absolutePaths(employees) {
-  if (!process.browser) {
-    employees.forEach(function(employee) {
-      employee.portrait = path.resolve(__dirname, '..', employee.portrait);
-      employee.thumbnail = path.resolve(__dirname, '..', employee.thumbnail);
-    });
-  }
-
-  return employees;
-}
-
-}).call(this,require('_process'),"/lib")
-},{"../employees.json":1,"../projects.json":4,"_process":3,"path":2}]},{},[5])(5)
+},{}]},{},[2])(2)
 });
+//# sourceMappingURL=mock-data.js.map
