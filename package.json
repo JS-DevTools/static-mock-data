@@ -7,36 +7,33 @@
   ],
   "author": {
     "name": "James Messinger",
-    "url": "http://bigstickcarpet.com"
+    "url": "http://jamesmessinger.com"
   },
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
   "homepage": "https://github.com/BigstickCarpet/mock-data",
   "main": "lib/index.js",
   "scripts": {
-    "build": "jshint . --verbose && jscs . --verbose && npm run browserify",
-    "browserify": "browserify . --standalone mock.data -o dist/mock-data.js && browserify -g uglifyify . --standalone mock.data -o dist/mock-data.min.js",
-    "test": "istanbul cover _mocha -- --recursive tests && npm run karma",
-    "mocha": "mocha --recursive tests",
-    "karma": "karma start --single-run",
-    "update-deps": "npm-check-updates -u && npm update",
-    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
+    "build": "npm run lint && npm run browserify",
+    "lint": "jshint . --verbose && jscs . --verbose",
+    "browserify": "simplifyify lib/index.js --outfile dist/mock-data.js --standalone mock.data --debug --minify",
+    "test": "istanbul cover _mocha -- --bail --recursive tests && npm run karma",
+    "mocha": "mocha --bail --recursive tests",
+    "karma": "npm run browserify -- --test && karma start --single-run",
+    "upgrade": "npm-check-updates -u && npm update",
+    "bump": "bump --prompt --tag --push --all",
+    "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/mock-data.git"
   },
   "devDependencies": {
-    "browserify": "^11.0.0",
-    "chai": "^3.2.0",
-    "coveralls": "^2.11.3",
-    "istanbul": "^0.3.17",
-    "jquery": "^2.1.4",
-    "jscs": "^1.13.1",
-    "jshint": "^2.8.0",
+    "simplifyify": "^1.1.1",
     "karma": "^0.13.3",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
     "karma-cli": "0.1.0",
+    "karma-coverage": "^0.4.2",
     "karma-firefox-launcher": "^0.1.6",
     "karma-ie-launcher": "^0.2.0",
     "karma-mocha": "^0.2.0",
@@ -44,12 +41,17 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-safari-launcher": "^0.1.1",
     "karma-sinon": "^1.0.4",
-    "lodash": "^3.10.0",
+    "istanbul": "^0.3.17",
+    "coveralls": "^2.11.3",
     "mocha": "^2.2.5",
-    "npm-check-updates": "^1.5.1",
+    "chai": "^3.2.0",
     "sinon": "^1.15.4",
-    "uglifyify": "^3.0.1",
-    "version-bump-prompt": "^1.4.1"
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0",
+    "npm-check-updates": "^1.5.1",
+    "version-bump-prompt": "^1.4.1",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.0"
   },
   "dependencies": {}
 }
