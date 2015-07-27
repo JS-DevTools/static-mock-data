@@ -5,20 +5,19 @@
 module.exports = function(config) {
   var isMac      = /^darwin/.test(process.platform),
       isWindows  = /^win/.test(process.platform),
-      isLinux    = !(isMac || isWindows),
-      isTravisCI = process.env.TRAVIS === 'true';
+      isLinux    = !(isMac || isWindows);
 
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
-    reporters: ['mocha'],
+    reporters: ['mocha', 'coverage'],
 
     files: [
       // JS libs
       'node_modules/jquery/dist/jquery.js',
       'node_modules/lodash/index.js',
 
-      // <%= project.name %>
-      'dist/mock-data.min.js',
+      // mock-data
+      'dist/mock-data.test.js',
       {pattern: '*.json', included: false, served: true},
 
       // Unit tests
@@ -34,12 +33,24 @@ module.exports = function(config) {
       else if (isWindows) {
         return ['PhantomJS', 'Firefox', 'Chrome', 'Safari', 'IE'];
       }
-      else if (isTravisCI) {
+      else if (isLinux) {
         return ['PhantomJS', 'Firefox'];
       }
-      else if (isLinux) {
-        return ['PhantomJS', 'Firefox', 'Chrome'];
-      }
-    })()
+    })(),
+
+    coverageReporter: {
+      reporters: [
+        // Show a code-coverage summary in the console
+        {type: 'text-summary'},
+
+        // Create a code-coverage report for each browser
+        {
+          type: 'lcov',
+          subdir: function(browser) {
+            return browser.toLowerCase().split(/[ /-]/)[0];
+          }
+        },
+      ]
+    }
   });
 };

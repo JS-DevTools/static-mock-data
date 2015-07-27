@@ -1,43 +1,41 @@
 'use strict';
+var isBrowser = typeof(window) === 'object';
 
-if (typeof(window) === 'object') {
-  // We're running in a web browser
-  window.isBrowser = true;
-  window.isNode = false;
+var helper = {
+  isNode: !isBrowser,
+  isBrowser: isBrowser,
+  isSafari: isBrowser && /Safari/.test(navigator.userAgent),
+  isFirefox: isBrowser && /Firefox/.test(navigator.userAgent),
+  isIE: isBrowser && /Trident/.test(navigator.userAgent),
+  isChrome: !isBrowser || /Chrome/.test(navigator.userAgent)  // isChrome === true for Node
+};
 
-  // Mimic Node globals
-  window.require = _.noop;
-  window.__filename = $('script[src*="helper.js"]')[0].src;
-  window.__dirname = __filename.substr(0, __filename.lastIndexOf('/'));
+if (helper.isNode) {
+  // We're running in Node, so just export the helper object
+  module.exports = helper;
+}
+else if (helper.isBrowser) {
+  // We're running in a browser, so mimic the Node environment
+  window.global = window;
+  window.helper = helper;
+  window.lodash = _;
+  window['employees.json'] = requireJSON('../employees.json');
+  window['projects.json'] = requireJSON('../projects.json');
 
-  window.json = {
-    data: {
-      employees: requireJSON('../employees.json'),
-      projects: requireJSON('../projects.json')
-    }
+  // Fake `require()` for browsers
+  window.require = function(name) {
+    name = name.substr(name.lastIndexOf('/') + 1);
+    return name ? window[name] : window.mock.data;
   };
 }
-else {
-  // We're running in Node
-  global.isBrowser = false;
-  global.isNode = true;
 
-  // Export Node modules as globals
-  global.expect = require('chai').expect;
-  global.sinon = require('sinon');
-  global._ = require('lodash');
-
-  global.mock = {
-    data: require('../')
-  };
-
-  global.json = {
-    data: {
-      employees: require('../employees.json'),
-      projects: require('../projects.json')
-    }
-  };
-}
+/**
+ * Set global settings for all tests
+ */
+beforeEach(function() {
+  this.currentTest.timeout(2000);
+  this.currentTest.slow(100);
+});
 
 /**
  * Synchronously loads a JSON file in a web browser, via JQuery
@@ -48,8 +46,12 @@ else {
 function requireJSON(filename) {
   var json;
 
+  if (window.__karma__) {
+    filename = '/base/tests/' + filename;
+  }
+
   $.ajax({
-    url: __dirname + '/' + filename,
+    url: filename,
     async: false,
     dataType: 'json',
     success: function(response) {
