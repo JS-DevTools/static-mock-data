@@ -1,17 +1,11 @@
 'use strict';
 
-var helper      = require('./helper'),
-    mockData    = require('../'),
-    projectJSON = require('../projects.json'),
-    expect      = require('chai').expect,
-    _           = require('lodash');
-
 describe('projects', function() {
   it('should be two separate data sources', function() {
-    expect(mockData.projects).not.to.equal(projectJSON);
+    expect(mock.data.projects).not.to.equal(projectJSON);
   });
 
-  [projectJSON, mockData.projects].forEach(function(projects) {
+  [projectJSON, mock.data.projects].forEach(function(projects) {
     var isJSON = projects === projectJSON;
 
     describe(isJSON ? 'JSON' : 'JavaScript', function() {
@@ -65,7 +59,7 @@ describe('projects', function() {
       it('should only have employees from the same department', function() {
         projects.forEach(function(project) {
           project.assigned.forEach(function(username) {
-            var employee = _.find(mockData.employees, {username: username});
+            var employee = _.find(mock.data.employees, {username: username});
             expect(employee.department).to.equal(project.department);
           });
         });
@@ -74,7 +68,7 @@ describe('projects', function() {
       it('should only have employees that were employed during the project timeframe', function() {
         projects.forEach(function(project) {
           project.assigned.forEach(function(username) {
-            var employee = _.find(mockData.employees, {username: username});
+            var employee = _.find(mock.data.employees, {username: username});
 
             if (project.endedOn !== null) {
               var hired = new Date(employee.hiredOn);

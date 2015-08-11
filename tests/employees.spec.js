@@ -1,25 +1,22 @@
 'use strict';
 
-var helper       = require('./helper'),
-    mockData     = require('../'),
-    employeeJSON = require('../employees.json'),
-    expect       = require('chai').expect,
-    fs           = require('fs') || {},
-    path         = require('path') || {},
-    _            = require('lodash');
+if (userAgent.isNode) {
+  var path = require('path'),
+      fs   = require('fs');
 
-// Polyfill for `path.isAbsolute()` on Node 0.10
-path.isAbsolute = path.isAbsolute || function(file) {
-    return file.substr(0, 1) === '/' ||
-      file.substr(1, 2) === ':\\';
-  };
+  // Polyfill for `path.isAbsolute()` on Node 0.10
+  path.isAbsolute = path.isAbsolute || function(file) {
+      return file.substr(0, 1) === '/' ||
+        file.substr(1, 2) === ':\\';
+    };
+}
 
 describe('employees', function() {
   it('should be two separate data sources', function() {
-    expect(mockData.employees).not.to.equal(employeeJSON);
+    expect(mock.data.employees).not.to.equal(employeeJSON);
   });
 
-  [employeeJSON, mockData.employees].forEach(function(employees) {
+  [employeeJSON, mock.data.employees].forEach(function(employees) {
     var isJSON = employees === employeeJSON;
 
     describe(isJSON ? 'JSON' : 'JavaScript', function() {
@@ -100,7 +97,7 @@ describe('employees', function() {
 
       it('should have the correct paths to portrait images', function() {
         employees.forEach(function(employee) {
-          if (helper.isNode) {
+          if (userAgent.isNode) {
             if (isJSON) {
               expect(employee.portrait).not.to.satisfy(path.isAbsolute);
               expect(employee.thumbnail).not.to.satisfy(path.isAbsolute);
