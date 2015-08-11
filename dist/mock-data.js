@@ -3876,6 +3876,12 @@ module.exports=[
 ]
 },{}],2:[function(require,module,exports){
 (function (process,__dirname){
+/**!
+ * Mock Data v3.0.9
+ *
+ * @link https://github.com/BigstickCarpet/mock-data
+ * @license MIT
+ */
 'use strict';
 
 var employees = require('../employees.json'),
@@ -3884,20 +3890,23 @@ var employees = require('../employees.json'),
 
 /**
  * An array of employee objects with username, password, email, etc.
+ *
  * @type {object[]}
  */
 module.exports.employees = absolutePaths(cloneJSON(employees, ['dob', 'hiredOn', 'terminatedOn']));
 
 /**
  * An array of project objects with id, name, department, etc.
+ *
  * @type {object[]}
  */
 module.exports.projects = cloneJSON(projects, ['startedOn', 'endedOn']);
 
 /**
  * Clones raw JSON data, converting date strings to Date objects.
- * @param {object[]} json
- * @param {string[]} dateFields
+ *
+ * @param {object[]} json - JSON data
+ * @param {string[]} dateFields - The date fields that should be converted from strings to Date objects
  * @returns {object[]}
  */
 function cloneJSON(json, dateFields) {
@@ -3922,7 +3931,8 @@ function cloneJSON(json, dateFields) {
 
 /**
  * Makes the image paths absolute.
- * @param {object[]} employees
+ *
+ * @param {object[]} employees - Array of Employee objects
  */
 function absolutePaths(employees) {
   if (!process.browser) {
