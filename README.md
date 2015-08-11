@@ -11,6 +11,8 @@ Mock Data
 [![Bower](http://img.shields.io/bower/v/mock-data.svg)](#bower)
 [![License](https://img.shields.io/npm/l/@bigstickcarpet/mock-data.svg)](LICENSE)
 
+[![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](http://bigstickcarpet.github.io/mock-data)
+
 
 Features
 --------------------------

@@ -24,5 +24,12 @@
     "/.*",
     "karma.conf.js"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "sinon-js": "*",
+    "jquery": "*",
+    "lodash": "*"
+  }
 }
