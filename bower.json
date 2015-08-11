@@ -19,10 +19,13 @@
   },
   "ignore": [
     "/bower_components",
-    "/tests",
     "/lib",
+    "/www",
+    "/tests",
+    "/karma.conf.js",
     "/.*",
-    "karma.conf.js"
+    "/index.html",
+    "/package.json"
   ],
   "dependencies": {},
   "devDependencies": {
