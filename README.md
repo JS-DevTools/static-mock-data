@@ -11,13 +11,13 @@ Mock Data
 [![Bower](http://img.shields.io/bower/v/mock-data.svg)](#bower)
 [![License](https://img.shields.io/npm/l/@bigstickcarpet/mock-data.svg)](LICENSE)
 
-[![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](http://bigstickcarpet.github.io/mock-data)
+[![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](https://saucelabs.com/u/mock-data)
 
 
 Features
 --------------------------
 * No dependencies
-* Supports Node.js and all web browsers
+* [Tested](http://bigstickcarpet.github.io/mock-data/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
 * 100 mock employees, with names, addresses, phone numbers, etc.
 * 100 mock projects, with names, dates, departments, employees assigned, etc.
 * Full-size and thumbnail photos for each employee
