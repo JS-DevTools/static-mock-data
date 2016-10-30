@@ -3877,7 +3877,7 @@ module.exports=[
 },{}],2:[function(require,module,exports){
 (function (process,__dirname){
 /**!
- * Static Mock Data v3.1.0
+ * Static Mock Data v3.1.1
  *
  * @link https://github.com/BigstickCarpet/static-mock-data
  * @license MIT
