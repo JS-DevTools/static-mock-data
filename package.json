@@ -1,21 +1,36 @@
 {
-  "name": "@bigstickcarpet/mock-data",
+  "name": "static-mock-data",
   "version": "3.0.11",
-  "description": "Mock data for sample apps, demos, and POCs",
+  "description": "Static mock data for sample apps, demos, and POCs",
   "keywords": [
-    "mock data"
+    "data",
+    "mock",
+    "sample",
+    "samples",
+    "users",
+    "mock data",
+    "sample data",
+    "mock user data",
+    "sample user data"
   ],
   "author": {
     "name": "James Messinger",
     "url": "http://jamesmessinger.com"
   },
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
-  "homepage": "https://github.com/BigstickCarpet/mock-data",
+  "homepage": "https://github.com/BigstickCarpet/static-mock-data",
   "main": "lib/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "portraits",
+    "employees.json",
+    "projects.json"
+  ],
   "scripts": {
     "lint": "jshint . --verbose && jscs . --verbose",
     "build": "npm run lint && npm run browserify",
-    "browserify": "simplifyify lib/index.js --outfile dist/mock-data.js --standalone mock.data --debug --minify",
+    "browserify": "simplifyify lib/index.js --outfile dist/static-mock-data.js --standalone mock.data --debug --minify",
     "watch": "npm run browserify -- --watch",
     "test": "istanbul cover _mocha -- --bail --recursive tests && npm run karma",
     "mocha": "mocha --bail --recursive tests",
@@ -26,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BigstickCarpet/mock-data.git"
+    "url": "https://github.com/BigstickCarpet/static-mock-data.git"
   },
   "devDependencies": {
     "simplifyify": "^1.4.1",

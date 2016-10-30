@@ -14,7 +14,7 @@ module.exports = function(config) {
       'www/bower_components/lodash/lodash.js',
 
       // Mock Data
-      'dist/mock-data.min.js',
+      'dist/static-mock-data.min.js',
       {pattern: '*.json', included: false, served: true},
 
       // Unit Tests

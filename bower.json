@@ -1,6 +1,6 @@
 {
-  "name": "mock-data",
-  "description": "Mock data for sample apps, demos, and POCs",
+  "name": "static-mock-data",
+  "description": "Static mock data for sample apps, demos, and POCs",
   "keywords": [
     "mock data"
   ],
@@ -11,17 +11,17 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/BigstickCarpet/mock-data",
-  "main": "dist/mock-data.js",
+  "homepage": "https://github.com/BigstickCarpet/static-mock-data",
+  "main": "dist/static-mock-data.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BigstickCarpet/mock-data.git"
+    "url": "https://github.com/BigstickCarpet/static-mock-data.git"
   },
   "ignore": [
     "/bower_components",
     "/lib",
     "/www",
-    "/tests",
+    "/test",
     "/karma.conf.js",
     "/.*",
     "/index.html",

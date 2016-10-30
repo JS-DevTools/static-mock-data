@@ -2,22 +2,22 @@ Mock Data
 ============================
 #### Mock data for sample apps, demos, and POCs
 
-[![Build Status](https://api.travis-ci.org/BigstickCarpet/mock-data.svg)](https://travis-ci.org/BigstickCarpet/mock-data)
-[![Dependencies](https://david-dm.org/BigstickCarpet/mock-data.svg)](https://david-dm.org/BigstickCarpet/mock-data)
-[![Coverage Status](https://coveralls.io/repos/BigstickCarpet/mock-data/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/mock-data)
-[![Inline docs](http://inch-ci.org/github/bigstickcarpet/mock-data.svg?branch=master&style=shields)](http://inch-ci.org/github/bigstickcarpet/mock-data)
+[![Build Status](https://api.travis-ci.org/BigstickCarpet/static-mock-data.svg)](https://travis-ci.org/BigstickCarpet/static-mock-data)
+[![Dependencies](https://david-dm.org/BigstickCarpet/static-mock-data.svg)](https://david-dm.org/BigstickCarpet/static-mock-data)
+[![Coverage Status](https://coveralls.io/repos/BigstickCarpet/static-mock-data/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/static-mock-data)
+[![Inline docs](http://inch-ci.org/github/bigstickcarpet/static-mock-data.svg?branch=master&style=shields)](http://inch-ci.org/github/bigstickcarpet/static-mock-data)
 
-[![npm](http://img.shields.io/npm/v/@bigstickcarpet/mock-data.svg)](https://www.npmjs.com/package/@bigstickcarpet/mock-data)
-[![Bower](http://img.shields.io/bower/v/mock-data.svg)](#bower)
-[![License](https://img.shields.io/npm/l/@bigstickcarpet/mock-data.svg)](LICENSE)
+[![npm](http://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
+[![Bower](http://img.shields.io/bower/v/static-mock-data.svg)](#bower)
+[![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](https://saucelabs.com/u/mock-data)
+[![Browser Compatibility](https://saucelabs.com/browser-matrix/static-mock-data.svg)](https://saucelabs.com/u/static-mock-data)
 
 
 Features
 --------------------------
 * No dependencies
-* [Tested](http://bigstickcarpet.github.io/mock-data/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
+* [Tested](http://bigstickcarpet.github.io/static-mock-data/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
 * 100 mock employees, with names, addresses, phone numbers, etc.
 * 100 mock projects, with names, dates, departments, employees assigned, etc.
 * Full-size and thumbnail photos for each employee
@@ -36,14 +36,14 @@ Installation &amp; Usage
 Install via [NPM](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ````bash
-npm install @bigstickcarpet/mock-data
+npm install static-mock-data
 ````
 
 The mock data can be used as plain JSON or as JavaScript arrays of objects.
 
 ##### Raw JSON
 ```javascript
-var employeeJSON = require('@bigstickcarpet/mock-data/employees.json');
+var employeeJSON = require('static-mock-data/employees.json');
 employeeJSON.forEach(function(employee) {
   console.log(employee.dob);    // string (in ISO 8601 zulu format)
 });
@@ -51,7 +51,7 @@ employeeJSON.forEach(function(employee) {
 
 ##### JavaScript Objects
 ```javascript
-var mockData = require('@bigstickcarpet/mock-data');
+var mockData = require('static-mock-data');
 mockData.employees.forEach(function(employee) {
   console.log(employee.dob);    // Date object
 });
@@ -61,14 +61,14 @@ mockData.employees.forEach(function(employee) {
 Install via [Bower](http://bower.io):
 
 ````bash
-bower install mock-data
+bower install static-mock-data
 ````
 
 The mock data can be used as plain JSON (via [`jQuery.getJSON()`](https://api.jquery.com/jquery.getjson/)) or as JavaScript arrays of objects.
 
 ##### Raw JSON
 ```javascript
-$.getJSON("bower_components/mock-data/employees.json", function(employeeJSON) {
+$.getJSON("bower_components/static-mock-data/employees.json", function(employeeJSON) {
   employeeJSON.forEach(function(employee) {
     console.log(employee.dob);    // string (in ISO 8601 zulu format)
   });
@@ -78,7 +78,7 @@ $.getJSON("bower_components/mock-data/employees.json", function(employeeJSON) {
 
 ##### JavaScript Objects
 ```html
-<script src="bower_components/mock-data/dist/mock-data.min.js"></script>
+<script src="bower_components/static-mock-data/dist/static-mock-data.min.js"></script>
 <script>
   mock.data.employees.forEach(function(employee) {
     console.log(employee.dob);    // Date object
