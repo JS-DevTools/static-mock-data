@@ -18,8 +18,8 @@ module.exports = function (config) {
       { pattern: '*.json', included: false, served: true },
 
       // Unit Tests
-      'test/**/_*.js',
-      'test/**/*.spec.js'
+      'test/fixtures/*.js',
+      'test/specs/*.js'
     ]
   };
 

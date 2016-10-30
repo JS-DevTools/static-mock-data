@@ -5,7 +5,7 @@
  * Why not use Browserify instead of globals?
  *  - To make sure Mock Data works properly when Node and CommonJS are not available
  *  - Some of our devDependencies have separate packages packages for Node vs. Browser (e.g. Mocha, Sinon)
- *  - This reduces redundant boilerplate code in the .spec files
+ *  - This reduces redundant boilerplate code in the spec files
  */
 (function () {
   'use strict';
@@ -30,7 +30,7 @@
   }
   else {
     // Expose Node globals
-    global.mock = { data: require('../') };
+    global.mock = { data: require('../../') };
     global.expect = require('chai').expect;
     global.sinon = require('sinon');
     global._ = require('lodash');
@@ -40,8 +40,8 @@
       isBrowser: false
     };
 
-    global.employeeJSON = require('../employees.json');
-    global.projectJSON = require('../projects.json');
+    global.employeeJSON = require('../../employees.json');
+    global.projectJSON = require('../../projects.json');
   }
 
   // Set global settings for all tests
