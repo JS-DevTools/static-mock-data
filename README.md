@@ -18,7 +18,7 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 Features
 --------------------------
 * No dependencies
-* [Tested](http://bigstickcarpet.github.io/static-mock-data/tests/index.html) in Node, IO.js, and all modern web browsers on Mac, Windows, Linux, iOS, and Android
+* [Tested](http://bigstickcarpet.github.io/static-mock-data/tests/index.html) in Node.js and all modern web browsers on Mac, Windows, and Linux
 * 100 mock employees, with names, addresses, phone numbers, etc.
 * 100 mock projects, with names, dates, departments, employees assigned, etc.
 * Full-size and thumbnail photos for each employee

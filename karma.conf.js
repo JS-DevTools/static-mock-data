@@ -37,13 +37,13 @@ function configureBrowsers (config) {
       isLinux   = !(isMac || isWindows);
 
   if (isMac) {
-    config.browsers = ['PhantomJS', 'Firefox', 'Chrome', 'Safari'];
+    config.browsers = ['Firefox', 'Chrome', 'Safari'];
   }
   else if (isLinux) {
-    config.browsers = ['PhantomJS', 'Firefox'];
+    config.browsers = ['Firefox'];
   }
   else if (isWindows) {
-    config.browsers = ['PhantomJS', 'Firefox', 'Chrome', 'Safari', 'IE9', 'IE10', 'IE'];
+    config.browsers = ['Firefox', 'Chrome', 'Safari', 'IE9', 'IE10', 'IE'];
 
     // NOTE: IE 6, 7, 8 are not supported by Chai
     config.customLaunchers = {
@@ -84,24 +84,6 @@ function configureSauceLabs (config) {
     };
 
     config.customLaunchers = {
-      'IE-9': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'internet explorer',
-        version: '9'
-      },
-      'IE-10': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'internet explorer',
-        version: '10'
-      },
-      'IE-11': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'internet explorer',
-        version: '11'
-      },
       'Chrome-Latest': {
         base: 'SauceLabs',
         platform: 'Windows 7',
@@ -122,29 +104,16 @@ function configureSauceLabs (config) {
         platform: 'OS X 10.10',
         browserName: 'safari'
       },
-      'iOS-6': {
+      'IE-10': {
         base: 'SauceLabs',
-        platform: 'OS X 10.10',
-        browserName: 'iphone',
-        version: '6'
+        platform: 'Windows 7',
+        browserName: 'internet explorer',
+        version: '9'
       },
-      'iOS-8': {
+      'IE-Edge': {
         base: 'SauceLabs',
-        platform: 'OS X 10.10',
-        browserName: 'iphone',
-        version: '8'
-      },
-      'Android-4-4': {
-        base: 'SauceLabs',
-        platform: 'Linux',
-        browserName: 'android',
-        version: '4.4'
-      },
-      'Android-5': {
-        base: 'SauceLabs',
-        platform: 'Linux',
-        browserName: 'android',
-        version: '5'
+        platform: 'Windows 10',
+        browserName: 'microsoftedge'
       }
     };
 
