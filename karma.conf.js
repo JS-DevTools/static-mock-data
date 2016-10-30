@@ -43,7 +43,7 @@ function configureBrowsers (config) {
     config.browsers = ['Firefox'];
   }
   else if (isWindows) {
-    config.browsers = ['Firefox', 'Chrome', 'Safari', 'IE9', 'IE10', 'IE'];
+    config.browsers = ['Firefox', 'Chrome', 'IE9', 'IE10', 'IE'];
 
     // NOTE: IE 6, 7, 8 are not supported by Chai
     config.customLaunchers = {
