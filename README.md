@@ -5,6 +5,7 @@ Mock Data
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/static-mock-data.svg)](https://travis-ci.org/BigstickCarpet/static-mock-data)
 [![Dependencies](https://david-dm.org/BigstickCarpet/static-mock-data.svg)](https://david-dm.org/BigstickCarpet/static-mock-data)
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/static-mock-data/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/static-mock-data)
+[![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/jamesmessinger/static-mock-data)
 [![Inline docs](http://inch-ci.org/github/bigstickcarpet/static-mock-data.svg?branch=master&style=shields)](http://inch-ci.org/github/bigstickcarpet/static-mock-data)
 
 [![npm](http://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
