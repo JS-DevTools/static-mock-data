@@ -1,6 +1,6 @@
-Mock Data
-============================
-#### Mock data for sample apps, demos, and POCs
+Static mock data
+------------------------------
+Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/static-mock-data.svg)](https://travis-ci.org/BigstickCarpet/static-mock-data)
 [![Dependencies](https://david-dm.org/BigstickCarpet/static-mock-data.svg)](https://david-dm.org/BigstickCarpet/static-mock-data)
