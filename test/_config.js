@@ -7,10 +7,10 @@
  *  - Some of our devDependencies have separate packages packages for Node vs. Browser (e.g. Mocha, Sinon)
  *  - This reduces redundant boilerplate code in the .spec files
  */
-(function() {
+(function () {
   'use strict';
 
-  if (typeof(window) === 'object') {
+  if (typeof (window) === 'object') {
     // Configure Mocha
     mocha.setup('bdd');
     mocha.fullTrace();
@@ -30,7 +30,7 @@
   }
   else {
     // Expose Node globals
-    global.mock = {data: require('../')};
+    global.mock = { data: require('../') };
     global.expect = require('chai').expect;
     global.sinon = require('sinon');
     global._ = require('lodash');
@@ -45,7 +45,7 @@
   }
 
   // Set global settings for all tests
-  beforeEach(function() {
+  beforeEach(function () {
     this.currentTest.timeout(2000);
     this.currentTest.slow(100);
   });
@@ -56,7 +56,7 @@
    * @param {string} filename
    * @returns {object[]}
    */
-  function requireJSON(filename) {
+  function requireJSON (filename) {
     var json;
 
     if (window.__karma__) {
@@ -67,7 +67,7 @@
       url: filename,
       async: false,
       dataType: 'json',
-      success: function(response) {
+      success: function (response) {
         json = response;
       }
     });
@@ -75,4 +75,4 @@
     return json;
   }
 
-})();
+}());

@@ -1,57 +1,52 @@
-'use strict';
+describe('employees', function () {
+  'use strict';
 
-if (userAgent.isNode) {
-  var path = require('path'),
-      fs   = require('fs');
+  var path, fs;
+  if (userAgent.isNode) {
+    path = require('path');
+    fs = require('fs');
+  }
 
-  // Polyfill for `path.isAbsolute()` on Node 0.10
-  path.isAbsolute = path.isAbsolute || function(file) {
-      return file.substr(0, 1) === '/' ||
-        file.substr(1, 2) === ':\\';
-    };
-}
-
-describe('employees', function() {
-  it('should be two separate data sources', function() {
+  it('should be two separate data sources', function () {
     expect(mock.data.employees).not.to.equal(employeeJSON);
   });
 
-  [employeeJSON, mock.data.employees].forEach(function(employees) {
+  [employeeJSON, mock.data.employees].forEach(function (employees) {
     var isJSON = employees === employeeJSON;
 
-    describe(isJSON ? 'JSON' : 'JavaScript', function() {
-      it('should have 102 employees', function() {
+    describe(isJSON ? 'JSON' : 'JavaScript', function () {
+      it('should have 102 employees', function () {
         expect(employees).to.have.lengthOf(102);
       });
 
-      it('should have an admin employee', function() {
-        var admin = _.where(employees, {username: 'admin', password: 'admin'});
+      it('should have an admin employee', function () {
+        var admin = _.filter(employees, { username: 'admin', password: 'admin' });
         expect(admin).to.have.lengthOf(1);
       });
 
-      it('should have a jdoe employee', function() {
-        var jdoe = _.where(employees, {username: 'jdoe', password: 'jdoe'});
+      it('should have a jdoe employee', function () {
+        var jdoe = _.filter(employees, { username: 'jdoe', password: 'jdoe' });
         expect(jdoe).to.have.lengthOf(1);
       });
 
-      it('all usernames should be unique', function() {
+      it('all usernames should be unique', function () {
         var usernames = [];
-        employees.forEach(function(employee) {
+        employees.forEach(function (employee) {
           expect(usernames).not.to.contain(employee.username);
           usernames.push(employee.username);
         });
       });
 
-      it('all SSNs should be unique', function() {
+      it('all SSNs should be unique', function () {
         var ssns = [];
-        employees.forEach(function(employee) {
+        employees.forEach(function (employee) {
           expect(ssns).not.to.contain(employee.ssn);
           ssns.push(employee.ssn);
         });
       });
 
-      it('should have valid data types for all fields', function() {
-        employees.forEach(function(employee) {
+      it('should have valid data types for all fields', function () {
+        employees.forEach(function (employee) {
           expect(employee.username).to.be.a('string').and.not.empty;
           expect(employee.password).to.be.a('string').and.not.empty;
           expect(employee.name.first).to.be.a('string').and.not.empty;
@@ -84,19 +79,19 @@ describe('employees', function() {
             }
           }
 
-          employee.phones.forEach(function(phone) {
+          employee.phones.forEach(function (phone) {
             expect(phone.type).to.be.a('string').and.match(/^home|office|cell$/);
             expect(phone.number).to.be.a('string').and.match(/^\d{3}-\d{3}-\d{4}$/);
           });
 
-          employee.roles.forEach(function(role) {
+          employee.roles.forEach(function (role) {
             expect(role).to.be.a('string').and.match(/^admin|employee|contractor|consultant|part time|full time|salaried|hourly$/);
           });
         });
       });
 
-      it('should have the correct paths to portrait images', function() {
-        employees.forEach(function(employee) {
+      it('should have the correct paths to portrait images', function () {
+        employees.forEach(function (employee) {
           if (userAgent.isNode) {
             if (isJSON) {
               expect(employee.portrait).not.to.satisfy(path.isAbsolute);
@@ -117,8 +112,8 @@ describe('employees', function() {
         });
       });
 
-      it('should not be terminated before being hired', function() {
-        employees.forEach(function(employee) {
+      it('should not be terminated before being hired', function () {
+        employees.forEach(function (employee) {
           if (employee.terminatedOn !== null) {
             var hired = new Date(employee.hiredOn);
             var terminated = new Date(employee.terminatedOn);
@@ -127,9 +122,9 @@ describe('employees', function() {
         });
       });
 
-      it('should have roles that do not conflict with each other', function() {
-        employees.forEach(function(employee) {
-          employee.roles.forEach(function(role) {
+      it('should have roles that do not conflict with each other', function () {
+        employees.forEach(function (employee) {
+          employee.roles.forEach(function (role) {
             // Only the admin user has the "admin" role
             if (role === 'admin') {
               expect(employee.username).to.equal('admin');
@@ -166,7 +161,7 @@ describe('employees', function() {
             }
           });
         });
-      })
+      });
     });
   });
 });

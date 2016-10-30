@@ -1,36 +1,36 @@
-'use strict';
+describe('projects', function () {
+  'use strict';
 
-describe('projects', function() {
-  it('should be two separate data sources', function() {
+  it('should be two separate data sources', function () {
     expect(mock.data.projects).not.to.equal(projectJSON);
   });
 
-  [projectJSON, mock.data.projects].forEach(function(projects) {
+  [projectJSON, mock.data.projects].forEach(function (projects) {
     var isJSON = projects === projectJSON;
 
-    describe(isJSON ? 'JSON' : 'JavaScript', function() {
-      it('should have 100 projects', function() {
+    describe(isJSON ? 'JSON' : 'JavaScript', function () {
+      it('should have 100 projects', function () {
         expect(projects).to.have.lengthOf(100);
       });
 
-      it('all project IDs should be unique', function() {
+      it('all project IDs should be unique', function () {
         var ids = [];
-        projects.forEach(function(project) {
+        projects.forEach(function (project) {
           expect(ids).not.to.contain(project.id);
           ids.push(project.id);
         });
       });
 
-      it('all project names should be unique', function() {
+      it('all project names should be unique', function () {
         var names = [];
-        projects.forEach(function(project) {
+        projects.forEach(function (project) {
           expect(names).not.to.contain(project.name);
           names.push(project.name);
         });
       });
 
-      it('should have valid data types for all fields', function() {
-        projects.forEach(function(project) {
+      it('should have valid data types for all fields', function () {
+        projects.forEach(function (project) {
           expect(project.id).to.be.a('number').above(1000);
           expect(project.name).to.be.a('string').and.have.length.above(20).and.below(56);
           expect(project.description).to.be.a('string').and.have.length.above(200).and.below(2000);
@@ -50,25 +50,25 @@ describe('projects', function() {
             }
           }
 
-          project.assigned.forEach(function(username) {
+          project.assigned.forEach(function (username) {
             expect(username).to.be.a('string').and.not.empty;
           });
         });
       });
 
-      it('should only have employees from the same department', function() {
-        projects.forEach(function(project) {
-          project.assigned.forEach(function(username) {
-            var employee = _.find(mock.data.employees, {username: username});
+      it('should only have employees from the same department', function () {
+        projects.forEach(function (project) {
+          project.assigned.forEach(function (username) {
+            var employee = _.find(mock.data.employees, { username: username });
             expect(employee.department).to.equal(project.department);
           });
         });
       });
 
-      it('should only have employees that were employed during the project timeframe', function() {
-        projects.forEach(function(project) {
-          project.assigned.forEach(function(username) {
-            var employee = _.find(mock.data.employees, {username: username});
+      it('should only have employees that were employed during the project timeframe', function () {
+        projects.forEach(function (project) {
+          project.assigned.forEach(function (username) {
+            var employee = _.find(mock.data.employees, { username: username });
 
             if (project.endedOn !== null) {
               var hired = new Date(employee.hiredOn);
@@ -83,7 +83,7 @@ describe('projects', function() {
             }
           });
         });
-      })
+      });
     });
   });
 });

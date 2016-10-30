@@ -24,14 +24,14 @@
   "dependencies": {},
   "devDependencies": {},
   "homepage": "https://github.com/chaijs/chai",
-  "version": "3.2.0",
-  "_release": "3.2.0",
+  "version": "3.5.0",
+  "_release": "3.5.0",
   "_resolution": {
     "type": "version",
-    "tag": "3.2.0",
-    "commit": "4e18d2a49394f21f49eaea97f556d6a17ecbcc7e"
+    "tag": "3.5.0",
+    "commit": "57c85f624a7e19ffaf1a2c7d07d81180db17bec7"
   },
-  "_source": "git://github.com/chaijs/chai.git",
+  "_source": "https://github.com/chaijs/chai.git",
   "_target": "*",
   "_originalSource": "chai"
 }

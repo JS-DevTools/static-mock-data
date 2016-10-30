@@ -1,0 +1,17 @@
+extends:
+  - modular/test
+
+env:
+  jquery: true
+
+globals:
+  _: true
+  mock: true
+  userAgent: true
+  employeeJSON: true
+  projectJSON: true
+
+rules:
+  strict:
+    - error
+    - function

@@ -45,7 +45,8 @@ The mock data can be used as plain JSON or as JavaScript arrays of objects.
 ```javascript
 var employeeJSON = require('static-mock-data/employees.json');
 employeeJSON.forEach(function(employee) {
-  console.log(employee.dob);    // string (in ISO 8601 zulu format)
+  console.log(employee.dob);        // string (in ISO 8601 zulu format)
+  console.log(employee.portrait);   // relative file path
 });
 ```
 
@@ -53,7 +54,8 @@ employeeJSON.forEach(function(employee) {
 ```javascript
 var mockData = require('static-mock-data');
 mockData.employees.forEach(function(employee) {
-  console.log(employee.dob);    // Date object
+  console.log(employee.dob);        // Date object
+  console.log(employee.portrait);   // absolute file path
 });
 ```
 
