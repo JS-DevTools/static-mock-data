@@ -12,7 +12,7 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Bower](http://img.shields.io/bower/v/static-mock-data.svg)](#bower)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![Browser Compatibility](https://saucelabs.com/browser-matrix/static-mock-data.svg)](https://saucelabs.com/u/static-mock-data)
+[![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](https://saucelabs.com/u/mock-data)
 
 
 Features
