@@ -2,7 +2,7 @@ describe('employees', function () {
   'use strict';
 
   var path, fs;
-  if (userAgent.isNode) {
+  if (env.NODE) {
     path = require('path');
     fs = require('fs');
   }
@@ -20,12 +20,16 @@ describe('employees', function () {
       });
 
       it('should have an admin employee', function () {
-        var admin = _.filter(employees, { username: 'admin', password: 'admin' });
+        var admin = employees.filter(function (employee) {
+          return employee.username === 'admin' && employee.password === 'admin';
+        });
         expect(admin).to.have.lengthOf(1);
       });
 
       it('should have a jdoe employee', function () {
-        var jdoe = _.filter(employees, { username: 'jdoe', password: 'jdoe' });
+        var jdoe = employees.filter(function (employee) {
+          return employee.username === 'jdoe' && employee.password === 'jdoe';
+        });
         expect(jdoe).to.have.lengthOf(1);
       });
 
@@ -92,7 +96,7 @@ describe('employees', function () {
 
       it('should have the correct paths to portrait images', function () {
         employees.forEach(function (employee) {
-          if (userAgent.isNode) {
+          if (env.NODE) {
             if (isJSON) {
               expect(employee.portrait).not.to.satisfy(path.isAbsolute);
               expect(employee.thumbnail).not.to.satisfy(path.isAbsolute);

@@ -59,7 +59,10 @@ describe('projects', function () {
       it('should only have employees from the same department', function () {
         projects.forEach(function (project) {
           project.assigned.forEach(function (username) {
-            var employee = _.find(mock.data.employees, { username: username });
+            var employee = mock.data.employees.filter(function (employee) {
+              return employee.username === username;
+            })[0];
+
             expect(employee.department).to.equal(project.department);
           });
         });
@@ -68,7 +71,9 @@ describe('projects', function () {
       it('should only have employees that were employed during the project timeframe', function () {
         projects.forEach(function (project) {
           project.assigned.forEach(function (username) {
-            var employee = _.find(mock.data.employees, { username: username });
+            var employee = mock.data.employees.filter(function (employee) {
+              return employee.username === username;
+            })[0];
 
             if (project.endedOn !== null) {
               var hired = new Date(employee.hiredOn);
