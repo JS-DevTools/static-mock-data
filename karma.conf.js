@@ -8,16 +8,16 @@ module.exports = function (config) {
     reporters: ['mocha'],
     files: [
       // Third-Party Libraries
-      'www/bower_components/chai/chai.js',
-      'www/bower_components/sinon-js/sinon.js',
-      'www/bower_components/jquery/dist/jquery.js',
-      'www/bower_components/lodash/lodash.js',
+      'test/bower_components/chai/chai.js',
+      'test/bower_components/jquery/dist/jquery.js',
 
       // Mock Data
       'dist/static-mock-data.min.js',
       { pattern: '*.json', included: false, served: true },
+      { pattern: '*.map', included: false, served: true },
 
       // Unit Tests
+      'test/fixtures/env.js',
       'test/fixtures/*.js',
       'test/specs/*.js'
     ]
@@ -32,9 +32,9 @@ module.exports = function (config) {
  * Configures the browsers for the current platform
  */
 function configureBrowsers (config) {
-  var isMac     = /^darwin/.test(process.platform),
-      isWindows = /^win/.test(process.platform),
-      isLinux   = !(isMac || isWindows);
+  var isMac = /^darwin/.test(process.platform);
+  var isWindows = /^win/.test(process.platform);
+  var isLinux = !(isMac || isWindows);
 
   if (isMac) {
     config.browsers = ['Firefox', 'Chrome', 'Safari'];

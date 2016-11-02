@@ -5,11 +5,10 @@ env:
   jquery: true
 
 globals:
-  _: true
-  mock: true
-  userAgent: true
-  employeeJSON: true
-  projectJSON: true
+  env: false
+  mock: false
+  employeeJSON: false
+  projectJSON: false
 
 rules:
   strict:
