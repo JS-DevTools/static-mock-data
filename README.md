@@ -3,6 +3,7 @@ Static mock data
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/static-mock-data.svg)](https://travis-ci.org/BigstickCarpet/static-mock-data)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/dntrlmpsqy7tc97u/branch/master?svg=true&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/static-mock-data/branch/master)
 [![Dependencies](https://david-dm.org/BigstickCarpet/static-mock-data.svg)](https://david-dm.org/BigstickCarpet/static-mock-data)
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/static-mock-data/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/static-mock-data)
 [![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/jamesmessinger/static-mock-data)
@@ -18,7 +19,7 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 Features
 --------------------------
 * No dependencies
-* [Tested](http://bigstickcarpet.github.io/static-mock-data/tests/index.html) in Node.js and all modern web browsers on Mac, Windows, and Linux
+* [Tested](http://bigstickcarpet.com/static-mock-data/test/index.html) in Node.js and all modern web browsers on Mac, Windows, and Linux
 * 100 mock employees, with names, addresses, phone numbers, etc.
 * 100 mock projects, with names, dates, departments, employees assigned, etc.
 * Full-size and thumbnail photos for each employee
@@ -30,10 +31,8 @@ Features
     - Employees are only assigned to projects that occurred during their employment
 
 
-Installation &amp; Usage
---------------------------
-
-### Node
+Usage in Node.js
+-------------------------------------
 Install via [NPM](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ````bash
@@ -60,7 +59,8 @@ mockData.employees.forEach(function(employee) {
 });
 ```
 
-### Web Browsers
+Usage in Web Browsers
+-----------------------------------------
 Install via [Bower](http://bower.io):
 
 ````bash
