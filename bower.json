@@ -20,7 +20,6 @@
   "ignore": [
     "/bower_components",
     "/lib",
-    "/www",
     "/test",
     "/appveyor.yml",
     "/karma.conf.js",
@@ -32,8 +31,6 @@
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "sinon-js": "*",
-    "jquery": "*",
-    "lodash": "*"
+    "jquery": "*"
   }
 }
