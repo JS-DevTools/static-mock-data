@@ -28,7 +28,7 @@
     "projects.json"
   ],
   "scripts": {
-    "lint": "eslint lib test --fix",
+    "lint": "eslint lib test/fixtures test/specs --fix",
     "build": "simplifyify lib/browser.js --outfile dist/static-mock-data.js --standalone mock.data --bundle --debug --minify",
     "test": "mocha && npm run karma",
     "cover": "istanbul cover _mocha",
