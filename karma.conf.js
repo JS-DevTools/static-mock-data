@@ -4,13 +4,10 @@
 // https://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function (config) {
   var baseConfig = {
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'jquery-chai'],
     reporters: ['mocha'],
-    files: [
-      // Third-Party Libraries
-      'test/bower_components/chai/chai.js',
-      'test/bower_components/jquery/dist/jquery.js',
 
+    files: [
       // Mock Data
       'dist/static-mock-data.min.js',
       { pattern: '*.json', included: false, served: true },

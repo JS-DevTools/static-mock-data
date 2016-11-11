@@ -28,9 +28,5 @@
     "/package.json"
   ],
   "dependencies": {},
-  "devDependencies": {
-    "chai": "*",
-    "mocha": "*",
-    "jquery": "*"
-  }
+  "devDependencies": {}
 }
