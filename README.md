@@ -134,6 +134,26 @@ Projects
 | `assigned`            | array of strings | Array of usernames of employees who are assigned to the project. Projects will only have employees from the same department.
 
 
+Contributing
+--------------------------
+I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/BigstickCarpet/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/BigstickCarpet/static-mock-data/pulls).
+
+#### Building
+To build the project locally on your computer:
+
+1. __Clone this repo__<br>
+`git clone https://github.com/bigstickcarpet/static-mock-data.git`
+
+2. __Install dependencies__<br>
+`npm install`
+
+3. __Run the build script__<br>
+`npm run build`
+
+4. __Run the tests__<br>
+`npm test`
+
+
 License
 --------------------------
 All JSON data is [MIT licensed](http://opensource.org/licenses/MIT) and can be used however you want.
