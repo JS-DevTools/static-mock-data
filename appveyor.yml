@@ -21,7 +21,7 @@ test_script:
 
   # run tests
   - npm run lint
-  - npm test
+  - npm run mocha
 
 # Don't run MSBuild
 build: off
