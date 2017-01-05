@@ -46,9 +46,9 @@
     "chai": "^3.2.0",
     "chai-jquery": "^2.0.0",
     "codacy-coverage": "^2.0.0",
-    "coveralls": "^2.11.4",
-    "eslint": "^3.9.0",
-    "eslint-config-modular": "^1.0.1",
+    "coveralls": "^2.11.15",
+    "eslint": "^3.12.2",
+    "eslint-config-modular": "^2.0.1",
     "istanbul": "^0.4.5",
     "jquery": "^3.1.1",
     "karma": "^1.3.0",
@@ -59,13 +59,13 @@
     "karma-ie-launcher": "^1.0.0",
     "karma-jquery-chai": "^0.1.3",
     "karma-mocha": "^1.2.0",
-    "karma-mocha-reporter": "^2.2.0",
+    "karma-mocha-reporter": "^2.2.1",
     "karma-safari-launcher": "^1.0.0",
     "karma-sauce-launcher": "^1.1.0",
-    "mocha": "^3.1.2",
+    "mocha": "^3.2.0",
     "npm-check": "^5.4.0",
-    "simplifyify": "^3.2.0",
-    "version-bump-prompt": "^1.5.1"
+    "simplifyify": "^3.2.1",
+    "version-bump-prompt": "^3.0.1"
   },
   "dependencies": {}
 }
