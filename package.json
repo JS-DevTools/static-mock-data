@@ -35,7 +35,7 @@
     "mocha": "mocha",
     "karma": "karma start --single-run",
     "upgrade": "npm-check -u",
-    "bump": "bump --prompt --grep lib/index.js dist/* --tag --push --all",
+    "bump": "bump --prompt --grep dist/* --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
   },
   "repository": {
