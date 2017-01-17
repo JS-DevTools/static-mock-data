@@ -2,8 +2,8 @@
 
 // Karma config
 // https://karma-runner.github.io/0.12/config/configuration-file.html
-module.exports = function (config) {
-  var baseConfig = {
+module.exports = function (karma) {
+  let config = {
     frameworks: ['mocha', 'jquery-chai'],
     reporters: ['mocha'],
 
@@ -13,25 +13,72 @@ module.exports = function (config) {
       { pattern: '*.json', included: false, served: true },
       { pattern: '*.map', included: false, served: true },
 
-      // Unit Tests
+      // Test Fixtures
       'test/fixtures/env.js',
       'test/fixtures/*.js',
+
+      // Test Specs
       'test/specs/*.js'
     ]
   };
 
-  configureBrowsers(baseConfig);
-  configureSauceLabs(baseConfig);
-  config.set(baseConfig);
+  exitIfDisabled();
+  configureCodeCoverage(config);
+  configureLocalBrowsers(config);
+  configureSauceLabs(config);
+
+  console.log('Karma Config:\n', JSON.stringify(config, null, 2));
+  karma.set(config);
 };
+
+/**
+ * If this is a CI job, and Karma is not enabled, then exit.
+ * (useful for CI jobs that are only testing Node.js, not web browsers)
+ */
+function exitIfDisabled () {
+  const CI = process.env.CI === 'true';
+  const KARMA = process.env.KARMA === 'true';
+
+  if (CI && !KARMA) {
+    console.warn('Karma is not enabled');
+    process.exit();
+  }
+}
+
+/**
+ * Configures the code-coverage reporter
+ */
+function configureCodeCoverage (config) {
+  if (process.argv.indexOf('--cover') === -1) {
+    console.warn('Code-coverage is not enabled');
+    return;
+  }
+
+  config.reporters.push('coverage');
+  config.coverageReporter = {
+    reporters: [
+      { type: 'text-summary' },
+      { type: 'lcov' }
+    ]
+  };
+
+  config.files.map(file => {
+    if (typeof file === 'string') {
+      return file.replace(/^dist\/(.*)\.min\.js$/, 'dist/$1.test.js');
+    }
+    else {
+       return file;
+    }
+  });
+}
 
 /**
  * Configures the browsers for the current platform
  */
-function configureBrowsers (config) {
-  var isMac = /^darwin/.test(process.platform);
-  var isWindows = /^win/.test(process.platform);
-  var isLinux = !(isMac || isWindows);
+function configureLocalBrowsers (config) {
+  const isMac = /^darwin/.test(process.platform);
+  const isWindows = /^win/.test(process.platform);
+  const isLinux = !isMac && !isWindows;
 
   if (isMac) {
     config.browsers = ['Firefox', 'Chrome', 'Safari'];
@@ -61,83 +108,53 @@ function configureBrowsers (config) {
  * https://github.com/karma-runner/karma-sauce-launcher
  */
 function configureSauceLabs (config) {
-  var username = process.env.SAUCE_USERNAME;
-  var accessKey = process.env.SAUCE_ACCESS_KEY;
-  var jobNumber = getJobNumber(process.env.TRAVIS_JOB_NUMBER);
+  const username = process.env.SAUCE_USERNAME;
+  const accessKey = process.env.SAUCE_ACCESS_KEY;
 
-  // Only run Sauce Labs if we have the username & access key.
-  // And only run it for the first job in a build. No need to run it for every job.
-  if (username && accessKey && jobNumber <= 1) {
-    var project = require('./package.json');
-    var testName = project.name + ' v' + project.version;
-    var build = testName + ' Build #' + process.env.TRAVIS_JOB_NUMBER + ' @ ' + new Date();
-
-    config.sauceLabs = {
-      build: build,
-      testName: testName,
-      tags: [project.name],
-      recordVideo: true,
-      recordScreenshots: true
-    };
-
-    config.customLaunchers = {
-      'Chrome-Latest': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'chrome'
-      },
-      'Firefox-Latest': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'firefox'
-      },
-      'Opera-Latest': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'opera'
-      },
-      'Safari-Latest': {
-        base: 'SauceLabs',
-        platform: 'OS X 10.10',
-        browserName: 'safari'
-      },
-      'IE-10': {
-        base: 'SauceLabs',
-        platform: 'Windows 7',
-        browserName: 'internet explorer',
-        version: '9'
-      },
-      'IE-Edge': {
-        base: 'SauceLabs',
-        platform: 'Windows 10',
-        browserName: 'microsoftedge'
-      }
-    };
-
-    config.reporters.push('saucelabs');
-    config.browsers = Object.keys(config.customLaunchers);
-
-    // Sauce Connect sometimes hangs (https://github.com/karma-runner/karma-sauce-launcher/issues/14)
-    // So terminate the process after a few minutes
-    setTimeout(function () {
-      console.warn('\nWARNING: Sauce Connect appears to have hung. Forcefully terminating.\n');
-      process.exit();
-    }, 1000 * 60 * 8); // 8 minutes
+  if (!username || !accessKey) {
+    console.warn('SauceLabs is not enabled');
+    return;
   }
-}
 
-/**
- * Returns the Travis CI job number, or 1 if there is no job number.
- *
- * Examples:
- *  - "4.1"   ->  1
- *  - "16.2"  ->  2
- *  - "16"    ->  1
- *  - ""      ->  1
- *  - null    ->  1
- */
-function getJobNumber (number) {
-  var match = /\.(\d+)/.exec(number);
-  var job = match ? match[1] || '1' : '1';
-  return parseInt(job);
+  let project = require('./package.json');
+  let testName = project.name + ' v' + project.version;
+  let build = testName + ' Build #' + process.env.TRAVIS_JOB_NUMBER + ' @ ' + new Date();
+
+  let sauceLaunchers = {
+    'SauceLabs_Chrome_Latest': {
+      base: 'SauceLabs',
+      platform: 'Windows 10',
+      browserName: 'chrome'
+    },
+    'SauceLabs_Firefox_Latest': {
+      base: 'SauceLabs',
+      platform: 'Windows 10',
+      browserName: 'firefox'
+    },
+    'SauceLabs_Safari_Latest': {
+      base: 'SauceLabs',
+      platform: 'macOS 10.12',
+      browserName: 'safari'
+    },
+    'SauceLabs_IE_9': {
+      base: 'SauceLabs',
+      platform: 'Windows 7',
+      browserName: 'internet explorer',
+      version: '9'
+    },
+    'SauceLabs_IE_Edge': {
+      base: 'SauceLabs',
+      platform: 'Windows 10',
+      browserName: 'microsoftedge'
+    },
+  };
+
+  config.reporters.push('saucelabs');
+  config.browsers = config.browsers.concat(Object.keys(sauceLaunchers));
+  config.customLaunchers = Object.assign(config.customLaunchers || {}, sauceLaunchers);
+  config.sauceLabs = {
+    build: build,
+    testName: testName,
+    tags: [project.name],
+  };
 }
