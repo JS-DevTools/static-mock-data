@@ -19,13 +19,14 @@
   },
   "ignore": [
     "/bower_components",
+    "/dist/*.test.js",
     "/lib",
     "/test",
-    "/appveyor.yml",
-    "/karma.conf.js",
     "/.*",
-    "/index.html",
-    "/package.json"
+    "/*.js",
+    "/*.json",
+    "/*.txt",
+    "/*.yml"
   ],
   "dependencies": {},
   "devDependencies": {}
