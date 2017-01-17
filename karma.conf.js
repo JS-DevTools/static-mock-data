@@ -5,7 +5,7 @@
 module.exports = function (karma) {
   let config = {
     frameworks: ['mocha', 'jquery-chai'],
-    reporters: ['mocha'],
+    reporters: ['verbose'],
 
     files: [
       // Mock Data
