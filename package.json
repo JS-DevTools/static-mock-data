@@ -33,7 +33,7 @@
   "scripts": {
     "lint": "eslint lib test/fixtures test/specs --fix",
     "build": "simplifyify lib/browser.js --outfile dist/static-mock-data.js --standalone mock.data --bundle --debug --minify",
-    "test": "npm run mocha && npm run karma",
+    "test": "npm run mocha && npm run karma && npm run lint",
     "cover": "istanbul cover _mocha && npm run build -- --test && npm run karma -- --cover",
     "mocha": "mocha",
     "karma": "karma start --single-run",
