@@ -38,4 +38,5 @@ node_modules
 # Test output
 lib-cov
 /coverage
+/dist/*.test.js
 /test/dir/**/*symlink*
