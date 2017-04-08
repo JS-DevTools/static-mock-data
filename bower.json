@@ -10,13 +10,13 @@
       "homepage": "http://bigstickcarpet.com"
     }
   ],
-  "license": "MIT",
   "homepage": "https://github.com/BigstickCarpet/static-mock-data",
-  "main": "dist/static-mock-data.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/static-mock-data.git"
   },
+  "main": "dist/static-mock-data.js",
   "ignore": [
     "/bower_components",
     "/dist/*.test.js",

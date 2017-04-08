@@ -17,8 +17,12 @@
     "name": "James Messinger",
     "url": "http://jamesmessinger.com"
   },
-  "license": "(MIT OR CC-BY-NC-SA-4.0)",
   "homepage": "https://github.com/BigstickCarpet/static-mock-data",
+  "license": "(MIT OR CC-BY-NC-SA-4.0)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/static-mock-data.git"
+  },
   "main": "lib/node.js",
   "files": [
     "dist/static-mock-data.js",
@@ -33,17 +37,13 @@
   "scripts": {
     "lint": "eslint lib test/fixtures test/specs --fix",
     "build": "simplifyify lib/browser.js --outfile dist/static-mock-data.js --standalone mock.data --bundle --debug --minify",
-    "test": "npm run mocha && npm run karma && npm run lint",
+    "test": "mocha && npm run karma && npm run lint",
     "cover": "istanbul cover _mocha && npm run build -- --test && npm run karma -- --cover",
     "mocha": "mocha",
     "karma": "karma start --single-run",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --grep dist/* --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BigstickCarpet/static-mock-data.git"
   },
   "devDependencies": {
     "chai": "^3.2.0",
