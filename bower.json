@@ -2,16 +2,24 @@
   "name": "static-mock-data",
   "description": "Static mock data for sample apps, demos, and POCs",
   "keywords": [
-    "mock data"
+    "data",
+    "mock",
+    "sample",
+    "samples",
+    "users",
+    "mock data",
+    "sample data",
+    "mock user data",
+    "sample user data"
   ],
   "authors": [
     {
       "name": "James Messinger",
-      "homepage": "http://bigstickcarpet.com"
+      "homepage": "http://jamesmessinger.com"
     }
   ],
-  "homepage": "https://github.com/BigstickCarpet/static-mock-data",
   "license": "MIT",
+  "homepage": "https://github.com/BigstickCarpet/static-mock-data",
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/static-mock-data.git"
