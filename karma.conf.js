@@ -5,7 +5,7 @@
 
 module.exports = function (karma) {
   var config = {
-    frameworks: ['mocha', 'jquery-chai'],
+    frameworks: ['mocha', 'jquery-chai', 'host-environment'],
     reporters: ['verbose'],
 
     files: [
@@ -15,7 +15,6 @@ module.exports = function (karma) {
       { pattern: '*.map', included: false, served: true },
 
       // Test Fixtures
-      'test/fixtures/env.js',
       'test/fixtures/*.js',
 
       // Test Specs

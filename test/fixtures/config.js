@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  if (env.BROWSER) {
+  if (host.browser) {
     // Configure Mocha for web browsers
     mocha.setup('bdd');
     mocha.fullTrace();

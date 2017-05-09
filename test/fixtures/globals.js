@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  if (env.BROWSER) {
+  if (host.browser) {
     // Define globals for web browsers
     window.expect = chai.expect;
     window.employeeJSON = requireJSON('../employees.json');

@@ -2,7 +2,7 @@ describe('employees', function () {
   'use strict';
 
   var path, fs;
-  if (env.NODE) {
+  if (host.node) {
     path = require('path');
     fs = require('fs');
   }
@@ -96,7 +96,7 @@ describe('employees', function () {
 
       it('should have the correct paths to portrait images', function () {
         employees.forEach(function (employee) {
-          if (env.NODE) {
+          if (host.node) {
             if (isJSON) {
               expect(employee.portrait).not.to.satisfy(path.isAbsolute);
               expect(employee.thumbnail).not.to.satisfy(path.isAbsolute);
