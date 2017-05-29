@@ -119,8 +119,8 @@ describe('employees', function () {
       it('should not be terminated before being hired', function () {
         employees.forEach(function (employee) {
           if (employee.terminatedOn !== null) {
-            var hired = new Date(employee.hiredOn);
-            var terminated = new Date(employee.terminatedOn);
+            var hired = new Date(employee.hiredOn).getTime();
+            var terminated = new Date(employee.terminatedOn).getTime();
             expect(terminated).to.be.above(hired);
           }
         });

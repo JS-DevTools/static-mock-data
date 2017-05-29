@@ -76,14 +76,14 @@ describe('projects', function () {
             })[0];
 
             if (project.endedOn !== null) {
-              var hired = new Date(employee.hiredOn);
-              var ended = new Date(project.endedOn);
+              var hired = new Date(employee.hiredOn).getTime();
+              var ended = new Date(project.endedOn).getTime();
               expect(hired).to.be.below(ended);
             }
 
             if (employee.terminatedOn !== null) {
-              var terminated = new Date(employee.terminatedOn);
-              var started = new Date(project.startedOn);
+              var terminated = new Date(employee.terminatedOn).getTime();
+              var started = new Date(project.startedOn).getTime();
               expect(terminated).to.be.above(started);
             }
           });
