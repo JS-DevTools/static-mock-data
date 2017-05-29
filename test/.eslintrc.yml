@@ -1,3 +1,7 @@
+# ESLint config
+# http://eslint.org/docs/user-guide/configuring
+# https://github.com/BigstickCarpet/eslint-config-modular
+
 extends:
   - modular/test
   - modular/browser
@@ -6,7 +10,11 @@ env:
   jquery: true
 
 globals:
-  host: false
+  # static-mock-data
   mock: false
   employeeJSON: false
   projectJSON: false
+
+  # karma-host-environment
+  # https://www.npmjs.com/package/karma-host-environment
+  host: false
