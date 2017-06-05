@@ -2,8 +2,8 @@ Static mock data
 ------------------------------
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
-[![Build Status](https://api.travis-ci.org/BigstickCarpet/static-mock-data.svg)](https://travis-ci.org/BigstickCarpet/static-mock-data)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet/static-mock-data?svg=true&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/static-mock-data/branch/master)
+[![Build Status](https://api.travis-ci.org/BigstickCarpet/static-mock-data.svg?branch=master)](https://travis-ci.org/BigstickCarpet/static-mock-data)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet/static-mock-data?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/static-mock-data/branch/master)
 
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/static-mock-data/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/static-mock-data)
 [![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/jamesmessinger/static-mock-data)
