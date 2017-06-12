@@ -1,5 +1,5 @@
 /*!
- * Static Mock Data v3.2.6 (May 29th 2017)
+ * Static Mock Data v3.2.7 (June 12th 2017)
  * 
  * https://github.com/BigstickCarpet/static-mock-data
  * 
