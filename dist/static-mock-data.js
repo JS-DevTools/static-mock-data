@@ -1,8 +1,8 @@
 /*!
- * Static Mock Data v3.2.7 (June 12th 2017)
- *
+ * Static Mock Data v3.2.8 (January 17th 2018)
+ * 
  * https://github.com/BigstickCarpet/static-mock-data
- *
+ * 
  * @author  James Messinger (http://bigstickcarpet.com)
  * @license (MIT OR CC-BY-NC-SA-4.0)
  */
