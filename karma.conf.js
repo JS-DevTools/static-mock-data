@@ -85,7 +85,7 @@ function configureLocalBrowsers (config) {
     config.browsers = ['Firefox'];
   }
   else if (isWindows) {
-    config.browsers = ['Firefox', 'Chrome', 'IE'];
+    config.browsers = ['Firefox', 'Chrome', 'IE', 'Edge'];
   }
 }
 
@@ -124,9 +124,8 @@ function configureSauceLabs (config) {
     },
     SauceLabs_IE_11: {
       base: 'SauceLabs',
-      platform: 'Windows 7',
-      browserName: 'internet explorer',
-      version: '11'
+      platform: 'Windows 10',
+      browserName: 'internet explorer'
     },
     SauceLabs_IE_Edge: {
       base: 'SauceLabs',
