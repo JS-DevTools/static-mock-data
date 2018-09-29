@@ -15,14 +15,14 @@
   "authors": [
     {
       "name": "James Messinger",
-      "homepage": "http://bigstickcarpet.com"
+      "homepage": "https://jamesmessinger.com"
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/BigstickCarpet/static-mock-data",
+  "homepage": "https://github.com/James-Messinger/static-mock-data",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BigstickCarpet/static-mock-data.git"
+    "url": "https://github.com/James-Messinger/static-mock-data.git"
   },
   "main": "dist/static-mock-data.js",
   "ignore": [
