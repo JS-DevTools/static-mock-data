@@ -11,7 +11,6 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Dependencies](https://david-dm.org/James-Messinger/static-mock-data.svg)](https://david-dm.org/James-Messinger/static-mock-data)
 
 [![npm](http://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
-[![Bower](http://img.shields.io/bower/v/static-mock-data.svg)](#bower)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
 [![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](https://saucelabs.com/u/mock-data)
@@ -62,27 +61,10 @@ mockData.employees.forEach(function(employee) {
 
 Usage in Web Browsers
 -----------------------------------------
-Install via [Bower](http://bower.io):
+Reference [`static-mock-data.js`](dist/static-mock-data.js) or [`static-mock-data.min.js`](dist/static-mock-data.min.js) in your HTML:
 
-````bash
-bower install static-mock-data
-````
-
-The mock data can be used as plain JSON (via [`jQuery.getJSON()`](https://api.jquery.com/jquery.getjson/)) or as JavaScript arrays of objects.
-
-##### Raw JSON
-```javascript
-$.getJSON("bower_components/static-mock-data/employees.json", function(employeeJSON) {
-  employeeJSON.forEach(function(employee) {
-    console.log(employee.dob);    // string (in ISO 8601 zulu format)
-  });
-});
-```
-
-
-##### JavaScript Objects
 ```html
-<script src="bower_components/static-mock-data/dist/static-mock-data.min.js"></script>
+<script src="https://cdn.rawgit.com/James-Messinger/static-mock-data/master/dist/static-mock-data.js"></script>
 <script>
   mock.data.employees.forEach(function(employee) {
     console.log(employee.dob);    // Date object
