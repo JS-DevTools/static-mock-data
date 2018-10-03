@@ -7,10 +7,10 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 
 [![Coverage Status](https://coveralls.io/repos/github/James-Messinger/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/James-Messinger/static-mock-data)
 [![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/jamesmessinger/static-mock-data)
-[![Inline docs](http://inch-ci.org/github/James-Messinger/static-mock-data.svg?branch=master&style=shields)](http://inch-ci.org/github/James-Messinger/static-mock-data)
+[![Inline docs](https://inch-ci.org/github/James-Messinger/static-mock-data.svg?branch=master&style=shields)](https://inch-ci.org/github/James-Messinger/static-mock-data)
 [![Dependencies](https://david-dm.org/James-Messinger/static-mock-data.svg)](https://david-dm.org/James-Messinger/static-mock-data)
 
-[![npm](http://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
+[![npm](https://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
 [![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](https://saucelabs.com/u/mock-data)
