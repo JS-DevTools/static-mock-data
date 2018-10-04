@@ -2,13 +2,13 @@ Static mock data
 ------------------------------
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
-[![Build Status](https://api.travis-ci.org/James-Messinger/static-mock-data.svg?branch=master)](https://travis-ci.org/James-Messinger/static-mock-data)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/james-messinger/static-mock-data?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/static-mock-data/branch/master)
+[![Build Status](https://api.travis-ci.org/JS-DevTools/static-mock-data.svg?branch=master)](https://travis-ci.org/JS-DevTools/static-mock-data)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/JS-DevTools/static-mock-data?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/JamesMessinger/static-mock-data/branch/master)
 
-[![Coverage Status](https://coveralls.io/repos/github/James-Messinger/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/James-Messinger/static-mock-data)
-[![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/jamesmessinger/static-mock-data)
-[![Inline docs](https://inch-ci.org/github/James-Messinger/static-mock-data.svg?branch=master&style=shields)](https://inch-ci.org/github/James-Messinger/static-mock-data)
-[![Dependencies](https://david-dm.org/James-Messinger/static-mock-data.svg)](https://david-dm.org/James-Messinger/static-mock-data)
+[![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/static-mock-data)
+[![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/JamesMessinger/static-mock-data)
+[![Inline docs](https://inch-ci.org/github/JS-DevTools/static-mock-data.svg?branch=master&style=shields)](https://inch-ci.org/github/JS-DevTools/static-mock-data)
+[![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 
 [![npm](https://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
@@ -20,9 +20,9 @@ Features
 --------------------------
 * __[100 mock employees](https://raw.githubusercontent.com/James-Mesinger/static-mock-data/master/employees.json)__, with names, addresses, phone numbers, etc.
 * __[100 mock projects](https://raw.githubusercontent.com/James-Mesinger/static-mock-data/master/projects.json)__, with names, dates, departments, employees assigned, etc.
-* __[Full-size](https://github.com/James-Messinger/static-mock-data/blob/master/portraits/jdoe.jpg)__ and __[thumbnail](https://github.com/James-Messinger/static-mock-data/blob/master/portraits/jdoe-thumb.jpg)__ photos for each employee
+* __[Full-size](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe.jpg)__ and __[thumbnail](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe-thumb.jpg)__ photos for each employee
 * No dependencies
-* [Tested](https://jamesmessinger.com/static-mock-data/test/index.html) in Node.js and all modern web browsers on Mac, Windows, and Linux
+* [Tested](https://jsdevtools.org/static-mock-data/test/index.html) in Node.js and all modern web browsers on Mac, Windows, and Linux
 * All data follows logical rules:
     - Usernames, SSNs, addresses, etc. are unique
     - Birthdates, hire dates, and termination dates are in proper chronological order
@@ -64,7 +64,7 @@ Usage in Web Browsers
 Reference [`static-mock-data.js`](dist/static-mock-data.js) or [`static-mock-data.min.js`](dist/static-mock-data.min.js) in your HTML:
 
 ```html
-<script src="https://cdn.rawgit.com/James-Messinger/static-mock-data/master/dist/static-mock-data.js"></script>
+<script src="https://cdn.rawgit.com/JS-DevTools/static-mock-data/master/dist/static-mock-data.js"></script>
 <script>
   mock.data.employees.forEach(function(employee) {
     console.log(employee.dob);    // Date object
@@ -119,13 +119,13 @@ Projects
 
 Contributing
 --------------------------
-I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/James-Messinger/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/James-Messinger/static-mock-data/pulls).
+I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/JS-DevTools/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/JS-DevTools/static-mock-data/pulls).
 
 #### Building
 To build the project locally on your computer:
 
 1. __Clone this repo__<br>
-`git clone https://github.com/James-Messinger/static-mock-data.git`
+`git clone https://github.com/JS-DevTools/static-mock-data.git`
 
 2. __Install dependencies__<br>
 `npm install`

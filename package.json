@@ -18,10 +18,10 @@
     "url": "https://jamesmessinger.com"
   },
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
-  "homepage": "https://github.com/James-Messinger/static-mock-data",
+  "homepage": "https://github.com/JS-DevTools/static-mock-data",
   "repository": {
     "type": "git",
-    "url": "https://github.com/James-Messinger/static-mock-data.git"
+    "url": "https://github.com/JS-DevTools/static-mock-data.git"
   },
   "main": "lib/node.js",
   "browser": "lib/browser.js",
