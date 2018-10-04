@@ -1,8 +1,8 @@
 /*!
- * Static Mock Data v3.2.11 (September 29th 2018)
- *
+ * Static Mock Data v3.2.12 (October 4th 2018)
+ * 
  * https://github.com/JS-DevTools/static-mock-data
- *
+ * 
  * @author  James Messinger (https://jamesmessinger.com)
  * @license (MIT OR CC-BY-NC-SA-4.0)
  */
