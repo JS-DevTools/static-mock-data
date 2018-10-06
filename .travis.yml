@@ -13,12 +13,15 @@ addons:
 
 matrix:
   include:
-    # Node + Browser tests
+    # Node 10 + Browser tests
     - node_js: 10
       env: KARMA=true
 
-    # Node tests
+    # Node 8 + SauceLabs tests
     - node_js: 8
+      env: KARMA=true SAUCE=true
+
+    # Node 6 tests
     - node_js: 6
 
 before_script:
