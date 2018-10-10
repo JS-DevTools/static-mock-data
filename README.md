@@ -35,9 +35,9 @@ Usage in Node.js
 -------------------------------------
 Install via [NPM](https://docs.npmjs.com/getting-started/what-is-npm):
 
-````bash
+```bash
 npm install static-mock-data
-````
+```
 
 The mock data can be used as plain JSON or as JavaScript arrays of objects.
 
