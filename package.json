@@ -36,7 +36,7 @@
     "projects.json"
   ],
   "scripts": {
-    "lint": "eslint lib test/fixtures test/specs --fix",
+    "lint": "eslint lib test/fixtures test/specs",
     "build": "simplifyify lib/browser.js --outfile dist/static-mock-data.js --standalone mock.data --bundle --debug --minify",
     "test": "npm run test:node && npm run test:browser && npm run lint",
     "test:node": "mocha",
