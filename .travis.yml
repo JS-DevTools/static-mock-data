@@ -56,3 +56,14 @@ after_success:
 
   # send code-coverage data to Coveralls
   - cat ./coverage/lcov.info | coveralls
+
+jobs:
+  include:
+    - stage: Deploy
+      deploy:
+        provider: npm
+        api_key: $NPM_API_KEY
+        skip_cleanup: true
+        on:
+          tags: true
+          branch: master
