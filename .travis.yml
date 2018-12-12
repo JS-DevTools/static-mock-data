@@ -16,38 +16,7 @@ os:
   - osx
   - windows
 
-matrix:
-  include:
-    - name: Browser tests (Linux)
-      os: linux
-      node_js: 10
-      env: BROWSER_TESTS=true
-      addons:
-        firefox: latest
-        chrome: stable
-
-    - name: Browser tests (Mac)
-      os: osx
-      node_js: 10
-      env: BROWSER_TESTS=true
-      addons:
-        firefox: latest
-        chrome: stable
-
-    - name: Browser tests (Windows via SauceLabs)
-      os: linux
-      node_js: 10
-      env:
-        - BROWSER_TESTS=true
-        - WINDOWS=true
-
-script:
-  if [ ${BROWSER_TESTS} = "true" ]; then
-    npm run coverage:browser;
-  else
-    npm run lint;
-    npm run coverage:node;
-  fi
+script: npm run lint && npm run coverage:node
 
 after_success:
   # concatenate all code-coverage data into a single file
@@ -59,11 +28,34 @@ after_success:
 
 jobs:
   include:
+    - name: Browser tests (Linux)
+      os: linux
+      node_js: 10
+      script: npm run coverage:browser
+      addons:
+        firefox: latest
+        chrome: stable
+
+    - name: Browser tests (Mac)
+      os: osx
+      node_js: 10
+      script: npm run coverage:browser
+      addons:
+        firefox: latest
+        chrome: stable
+
+    - name: Browser tests (Windows via SauceLabs)
+      os: linux
+      node_js: 10
+      script: npm run coverage:browser
+      env: WINDOWS=true
+
     - stage: Deploy
       deploy:
         provider: npm
         api_key: $NPM_API_KEY
         skip_cleanup: true
+        script: true
         on:
           tags: true
           branch: master
