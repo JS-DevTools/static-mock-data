@@ -115,7 +115,7 @@ Projects
 
 Contributing
 --------------------------
-I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/JS-DevTools/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/JS-DevTools/static-mock-data/pulls).
+Contributions, enhancements, and bug-fixes are welcome!  [File an issue](https://github.com/JS-DevTools/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/JS-DevTools/static-mock-data/pulls).
 
 #### Building
 To build the project locally on your computer:
@@ -140,3 +140,12 @@ All JSON data is [MIT licensed](http://opensource.org/licenses/MIT) and can be u
 All images (employee portraits) are licensed under [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/2.0/deed.en) and have some limitations on their use.
 
 See the [LICENSE file](LICENSE) for more details.
+
+
+Big Thanks To
+--------------------------
+Thanks to these awesome companies for their support of Open Source developers ❤
+
+[![Travis CI](https://jsdevtools.org/img/badges/travis-ci.svg)](https://travis-ci.com)
+[![SauceLabs](https://jsdevtools.org/img/badges/sauce-labs.svg)](https://saucelabs.com)
+[![Coveralls](https://jsdevtools.org/img/badges/coveralls.svg)](https://coveralls.io)
