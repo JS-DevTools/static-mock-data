@@ -55,7 +55,8 @@ jobs:
         provider: npm
         api_key: $NPM_API_KEY
         skip_cleanup: true
-        script: true
+        script: false
+        after_success: false
         on:
           tags: true
           branch: master

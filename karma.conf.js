@@ -11,8 +11,8 @@ module.exports = function (karma) {
     files: [
       // Mock Data
       'dist/static-mock-data.min.js',
+      { pattern: 'dist/*.map', included: false, served: true },
       { pattern: '*.json', included: false, served: true },
-      { pattern: '*.map', included: false, served: true },
 
       // Test Fixtures
       'test/fixtures/*.js',
