@@ -2,16 +2,14 @@ Static mock data
 ------------------------------
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
-[![Build Status](https://api.travis-ci.org/JS-DevTools/static-mock-data.svg?branch=master)](https://travis-ci.org/JS-DevTools/static-mock-data)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/JS-DevTools/static-mock-data?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/JamesMessinger/static-mock-data/branch/master)
-
+[![Build Status](https://api.travis-ci.com/JS-DevTools/static-mock-data.svg?branch=master)](https://travis-ci.com/JS-DevTools/static-mock-data)
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/static-mock-data)
-[![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 
 [![npm](https://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
+[![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![Browser Compatibility](https://saucelabs.com/browser-matrix/mock-data.svg)](https://saucelabs.com/u/mock-data)
+[![OS and Browser Compatibility](https://jsdevtools.org/img/badges/ci-badges-with-ie.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
 
 
 Features

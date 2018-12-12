@@ -3,35 +3,51 @@
 # https://docs.travis-ci.com/user/customizing-the-build/
 # https://docs.travis-ci.com/user/migrating-from-legacy/
 
-dist: trusty
-sudo: required  # Required for headless Chrome
+filter_secrets: false
 language: node_js
 
-addons:
-  firefox: latest
-  chrome: stable
+node_js:
+  - 10
+  - 8
+  - 6
+
+os:
+  - linux
+  - osx
+  - windows
 
 matrix:
   include:
-    # Node 10 + Browser tests
-    - node_js: 10
-      env: KARMA=true
+    - name: Browser tests (Linux)
+      os: linux
+      node_js: 10
+      env: BROWSER_TESTS=true
+      addons:
+        firefox: latest
+        chrome: stable
 
-    # Node 8 + SauceLabs tests
-    - node_js: 8
-      env: KARMA=true SAUCE=true
+    - name: Browser tests (Mac)
+      os: osx
+      node_js: 10
+      env: BROWSER_TESTS=true
+      addons:
+        firefox: latest
+        chrome: stable
 
-    # Node 6 tests
-    - node_js: 6
-
-before_script:
-  # Setup a virtual display for browser testing
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+    - name: Browser tests (Windows via SauceLabs)
+      os: linux
+      node_js: 10
+      env:
+        - BROWSER_TESTS=true
+        - WINDOWS=true
 
 script:
-  - npm run lint
-  - npm run coverage
+  if [ ${BROWSER_TESTS} = "true" ]; then
+    npm run coverage:browser;
+  else
+    npm run lint;
+    npm run coverage:node;
+  fi
 
 after_success:
   # concatenate all code-coverage data into a single file
