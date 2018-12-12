@@ -6,8 +6,6 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/JS-DevTools/static-mock-data?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/JamesMessinger/static-mock-data/branch/master)
 
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/static-mock-data)
-[![Codacy Score](https://api.codacy.com/project/badge/Grade/6c5fcc961d4642d8a6fc48865e006233)](https://www.codacy.com/public/JamesMessinger/static-mock-data)
-[![Inline docs](https://inch-ci.org/github/JS-DevTools/static-mock-data.svg?branch=master&style=shields)](https://inch-ci.org/github/JS-DevTools/static-mock-data)
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 
 [![npm](https://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
