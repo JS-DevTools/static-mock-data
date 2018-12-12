@@ -51,12 +51,13 @@ jobs:
       env: WINDOWS=true
 
     - stage: Deploy
+      name: Publish to npm
+      script: npm run build
+      after_success: true
       deploy:
         provider: npm
         api_key: $NPM_API_KEY
         skip_cleanup: true
-        script: false
-        after_success: false
         on:
           tags: true
           branch: master
