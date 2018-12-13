@@ -1,7 +1,7 @@
 /*!
- * Static Mock Data v3.2.12 (October 4th 2018)
+ * Static Mock Data v3.2.13 (December 13th 2018)
  * 
- * https://github.com/JS-DevTools/static-mock-data
+ * https://jsdevtools.org/static-mock-data
  * 
  * @author  James Messinger (https://jamesmessinger.com)
  * @license (MIT OR CC-BY-NC-SA-4.0)
@@ -3883,11 +3883,11 @@ module.exports=[
   }
 ]
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
 // Start with the raw JSON data
-var employees = require('../employees.json');
-var projects = require('../projects.json');
+var employees = require("../employees.json");
+var projects = require("../projects.json");
 
 // Clone the JSON data, so that the original data is left unchanged,
 // and can still be accessed via require('static-mock-data/employees.json')
@@ -3895,8 +3895,8 @@ employees = cloneDeep(employees);
 projects = cloneDeep(projects);
 
 // Convert JSON date strings to JavaScript Date objects
-reviveDates(employees, ['dob', 'hiredOn', 'terminatedOn']);
-reviveDates(projects, ['startedOn', 'endedOn']);
+reviveDates(employees, ["dob", "hiredOn", "terminatedOn"]);
+reviveDates(projects, ["startedOn", "endedOn"]);
 
 module.exports = {
   /**
@@ -3925,7 +3925,7 @@ function cloneDeep (obj) {
 
   Object.keys(obj).forEach(function (key) {
     var value = obj[key];
-    if (value && typeof value === 'object') {
+    if (value && typeof value === "object") {
       value = cloneDeep(value);
     }
     clone[key] = value;
@@ -3945,7 +3945,7 @@ function reviveDates (array, dateFields) {
   array.forEach(function (obj) {
     dateFields.forEach(function (field) {
       var value = obj[field];
-      if (value && typeof value === 'string') {
+      if (value && typeof value === "string") {
         obj[field] = new Date(value);
       }
     });
