@@ -30,7 +30,6 @@ jobs:
   include:
     - name: Browser tests (Linux)
       os: linux
-      node_js: 10
       script: npm run coverage:browser
       addons:
         firefox: latest
@@ -38,7 +37,6 @@ jobs:
 
     - name: Browser tests (Mac)
       os: osx
-      node_js: 10
       script: npm run coverage:browser
       addons:
         firefox: latest
@@ -46,7 +44,6 @@ jobs:
 
     - name: Browser tests (Windows via SauceLabs)
       os: linux
-      node_js: 10
       script: npm run coverage:browser
       env: WINDOWS=true
 
@@ -56,6 +53,7 @@ jobs:
       after_success: true
       deploy:
         provider: npm
+        email: $NPM_EMAIL
         api_key: $NPM_API_KEY
         skip_cleanup: true
         on:
