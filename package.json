@@ -23,7 +23,7 @@
     "type": "git",
     "url": "https://github.com/JS-DevTools/static-mock-data.git"
   },
-  "main": "lib/node.js",
+  "main": "build/node.js",
   "browser": "lib/browser.js",
   "files": [
     "dist/static-mock-data.js",
@@ -38,6 +38,9 @@
   "scripts": {
     "lint": "eslint lib test/fixtures test/specs",
     "build": "simplifyify lib/browser.js --outfile dist/static-mock-data.js --standalone mock.data --bundle --debug --minify",
+    "build-ts": "tsc",
+    "build-rollup-dev": "tsc && rollup -c rollup.config.dev.js",
+    "build-rollup-prod": "tsc && rollup -c rollup.config.prod.js",
     "test": "npm run test:node && npm run test:browser && npm run lint",
     "test:node": "mocha",
     "test:browser": "karma start --single-run",
@@ -71,7 +74,15 @@
     "mocha": "^5.2.0",
     "npm-check": "^5.9.0",
     "nyc": "^13.1.0",
-    "simplifyify": "^7.0.1",
+    "rollup": "^1.0.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-typescript2": "^0.18.1",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2",
+    "typescript-tslint-plugin": "^0.2.1",
     "version-bump-prompt": "^4.2.1"
   },
   "dependencies": {}
