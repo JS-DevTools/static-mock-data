@@ -19,7 +19,7 @@ export default {
     commonjs(),
     nodeResolve(),
     json(),
-    typescript(),
+    // typescript(),
     terser({
       ecma: 8,
       output: {
