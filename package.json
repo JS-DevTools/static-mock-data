@@ -37,10 +37,9 @@
   ],
   "scripts": {
     "lint": "eslint lib test/fixtures test/specs",
-    "build": "simplifyify lib/browser.js --outfile dist/static-mock-data.js --standalone mock.data --bundle --debug --minify",
     "build-ts": "tsc",
-    "build-rollup-dev": "tsc && rollup -c rollup.config.dev.js",
-    "build-rollup-prod": "tsc && rollup -c rollup.config.prod.js",
+    "build-rollup-dev": "npm run build-ts && rollup -c rollup.config.dev.js",
+    "build-rollup-prod": "npm run build-ts && rollup -c rollup.config.prod.js",
     "test": "npm run test:node && npm run test:browser && npm run lint",
     "test:node": "mocha",
     "test:browser": "karma start --single-run",
