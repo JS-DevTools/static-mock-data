@@ -16,7 +16,7 @@ os:
   - osx
   - windows
 
-script: npm run lint && npm run coverage:node
+script: npm run lint && npm run build-ts && npm run coverage:node
 
 after_success:
   # concatenate all code-coverage data into a single file
@@ -30,21 +30,21 @@ jobs:
   include:
     - name: Browser tests (Linux)
       os: linux
-      script: npm run coverage:browser
+      script: npm run build-ts && npm run build-rollup-prod && npm run coverage:browser
       addons:
         firefox: latest
         chrome: stable
 
     - name: Browser tests (Mac)
       os: osx
-      script: npm run coverage:browser
+      script: npm run build-ts && npm run build-rollup-prod && npm run coverage:browser
       addons:
         firefox: latest
         chrome: stable
 
     - name: Browser tests (Windows via SauceLabs)
       os: linux
-      script: npm run coverage:browser
+      script: npm run build-ts && npm run build-rollup-prod && npm run coverage:browser
       env: WINDOWS=true
 
     - stage: Deploy
