@@ -107,11 +107,11 @@ function configureSauceLabs (config) {
   };
 
   config.customLaunchers = {
-    // IE_11: {
-    //   base: "SauceLabs",
-    //   platform: "Windows 7",
-    //   browserName: "internet explorer"
-    // },
+    IE_11: {
+      base: "SauceLabs",
+      platform: "Windows 7",
+      browserName: "internet explorer"
+    },
     Edge: {
       base: "SauceLabs",
       platform: "Windows 10",
@@ -126,5 +126,5 @@ function configureSauceLabs (config) {
   config.browserDisconnectTolerance = 5,
   config.browserDisconnectTimeout = 60000;
   config.browserNoActivityTimeout = 60000;
-  // config.logLevel = "debug";
+  config.logLevel = "debug";
 }
