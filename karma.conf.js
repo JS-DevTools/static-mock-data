@@ -82,7 +82,7 @@ function configureBrowsers (config) {
     config.browsers = ["Firefox", "Chrome"];
   }
   else if (isWindows) {
-    config.browsers = ["Firefox", "Chrome", "IE", "Edge"];
+    config.browsers = ["Firefox", "Chrome", "Edge"];
   }
 }
 
