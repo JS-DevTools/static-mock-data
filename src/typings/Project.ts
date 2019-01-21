@@ -1,4 +1,7 @@
-export default interface Projects {
+/**
+ * Interface that enforces the properties of an project
+ */
+export interface Project {
   id: number;
   name: string;
   description: string;

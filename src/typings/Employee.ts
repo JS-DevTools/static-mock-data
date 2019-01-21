@@ -1,4 +1,7 @@
-export default interface Employee {
+/**
+ * Interface that enforces the properties of an Employee
+ */
+export interface Employee {
   username: string;
   password: string;
   name: {
@@ -15,7 +18,7 @@ export default interface Employee {
     state: string;
     zip: string;
   };
-  phones: [{ type: string; number: string; }];
+  phones: [{ type: string; number: string }];
   ssn: string;
   dob: Date;
   hiredOn: Date;

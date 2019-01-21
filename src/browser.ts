@@ -1,5 +1,5 @@
-import Employee from "./typings/Employee";
-import Project from "./typings/Project";
+import { Employee } from "./typings/employee";
+import { Project } from "./typings/project";
 
 // Start with the raw JSON data
 import * as employeesJSON from "../employees.json";
@@ -7,8 +7,8 @@ import * as projectsJSON from "../projects.json";
 
 // Clone the JSON data, so that the original data is left unchanged,
 // and can still be accessed via require('static-mock-data/employees.json')
-let employees:[Employee] = cloneDeep(employeesJSON);
-let projects:[Project] = cloneDeep(projectsJSON);
+let employees: [Employee] = cloneDeep(employeesJSON);
+let projects: [Project] = cloneDeep(projectsJSON);
 
 
 // Convert JSON date strings to JavaScript Date objects
@@ -34,12 +34,10 @@ export {
 /**
  * Deep-clones a JSON object or array.
  *
- * @param {object|array} obj
- * @returns {object|array}
  */
 
-function cloneDeep(obj:any)  {
-  let clone:any = Array.isArray(obj) ? [] : {};
+function cloneDeep(obj: any)  {
+  let clone: any = Array.isArray(obj) ? [] : {};
 
   Object.keys(obj).forEach((key) => {
     let value = obj[key];
@@ -54,13 +52,9 @@ function cloneDeep(obj:any)  {
 
 /**
  * Converts JSON date string properties to JavaScript Date objects.
- *
- * @param {object[]} array - An array of objects to revive
- * @param {string[]} dateFields - An array of field names to Convert
- * @returns {object[]}
  */
-function reviveDates(array:any, dateFields:Array<string>) {
-  array.forEach((obj:any) => {
+function reviveDates<T extends any, K>(array: T, dateFields: K[]) {
+  array.forEach((obj: any) => {
     dateFields.forEach((field) => {
       const value = obj[field];
       if (value && typeof value === "string") {
