@@ -1,36 +1,34 @@
-"use strict";
-
-// Start with the raw JSON data
-
 import Employee from "./typings/Employee";
 import Project from "./typings/Project";
 
-let employees:Employee = require("../employees.json");
-let projects:Project = require("../projects.json");
+// Start with the raw JSON data
+import * as employeesJSON from "../employees.json";
+import * as projectsJSON from "../projects.json";
 
 // Clone the JSON data, so that the original data is left unchanged,
 // and can still be accessed via require('static-mock-data/employees.json')
-employees = cloneDeep(employees);
-projects = cloneDeep(projects);
+let employees:[Employee] = cloneDeep(employeesJSON);
+let projects:[Project] = cloneDeep(projectsJSON);
+
 
 // Convert JSON date strings to JavaScript Date objects
 reviveDates(employees, ["dob", "hiredOn", "terminatedOn"]);
 reviveDates(projects, ["startedOn", "endedOn"]);
 
-module.exports = {
+export {
   /**
    * An array of employee objects with username, password, email, etc.
    *
    * @type {object[]}
    */
-  employees: employees,
+  employees,
 
   /**
    * An array of project objects with id, name, department, etc.
    *
    * @type {object[]}
    */
-  projects: projects,
+  projects
 };
 
 /**

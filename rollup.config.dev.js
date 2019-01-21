@@ -6,7 +6,7 @@ import commonjs from "rollup-plugin-commonjs";
 
 export default {
 
-  input: "build/browser.js",
+  input: "cjs/src/browser.js",
 
   output: {
     file: "out/static-mock-data.js",

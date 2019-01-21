@@ -4,16 +4,18 @@
     "target": "esnext",
     "module": "esnext",
     "allowJs": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "lib": [
       "esnext",
       "dom"
     ],
 
-    "outDir": "build",
+    "outDir": "esm",
     "sourceMap": true,
     "declaration": false,
 
+    "alwaysStrict": true,
     "newLine": "LF",
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
