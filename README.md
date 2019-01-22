@@ -29,7 +29,7 @@ Features
 
 Usage in Node.js
 -------------------------------------
-Install via [NPM](https://docs.npmjs.com/getting-started/what-is-npm):
+Install via [npm](https://docs.npmjs.com/about-npm/):
 
 ```bash
 npm install static-mock-data
