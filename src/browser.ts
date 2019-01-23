@@ -53,7 +53,7 @@ function cloneDeep(obj: any)  {
 /**
  * Converts JSON date string properties to JavaScript Date objects.
  */
-function reviveDates<T extends any, K>(array: T, dateFields: K[]) {
+function reviveDates(array: any, dateFields: string[]) {
   array.forEach((obj: any) => {
     dateFields.forEach((field) => {
       const value = obj[field];
