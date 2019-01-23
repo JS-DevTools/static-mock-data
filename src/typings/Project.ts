@@ -8,5 +8,5 @@ export interface Project {
   department: string;
   startedOn: Date;
   endedOn: Date | null;
-  assignedOn: [string];
+  assignedOn: string[];
 }

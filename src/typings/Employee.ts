@@ -18,11 +18,11 @@ export interface Employee {
     state: string;
     zip: string;
   };
-  phones: [{ type: string; number: string }];
+  phones: Array<{ type: string; number: string }>;
   ssn: string;
   dob: Date;
   hiredOn: Date;
   terminatedOn: Date | null;
   department: string;
-  roles: [string];
+  roles: string[];
 }
