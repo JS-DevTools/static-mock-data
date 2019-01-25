@@ -55,6 +55,7 @@
     "release": "npm run upgrade && npm run build && npm test && npm run bump"
   },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "chai": "^4.2.0",
     "chai-jquery": "^2.0.0",
     "coveralls": "^3.0.2",
