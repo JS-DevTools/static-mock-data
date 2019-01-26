@@ -7,16 +7,16 @@
 
   if (host.browser) {
     // Define globals for web browsers
-    window.expect = chai.expect;
-    window.employeeJSON = requireJSON("../employees.json");
-    window.projectJSON = requireJSON("../projects.json");
+    host.global.expect = chai.expect;
+    host.global.employeeJSON = requireJSON("../employees.json");
+    host.global.projectJSON = requireJSON("../projects.json");
   }
   else {
     // Define globals for Node.js
-    global.employeeJSON = require("../../employees.json");
-    global.projectJSON = require("../../projects.json");
-    global.mock = { data: require("../../") };
-    global.expect = require("chai").expect;
+    host.global.employeeJSON = require("../../employees.json");
+    host.global.projectJSON = require("../../projects.json");
+    host.global.mock = { data: require("../../") };
+    host.global.expect = require("chai").expect;
     require("chai").should();
   }
 
@@ -29,7 +29,7 @@
   function requireJSON (filename) {
     let json;
 
-    if (window.__karma__) {
+    if (host.karma) {
       filename = "/base/tests/" + filename;
     }
 
