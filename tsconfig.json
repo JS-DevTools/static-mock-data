@@ -1,9 +1,7 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "allowJs": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "lib": [
@@ -13,9 +11,8 @@
 
     "outDir": "esm",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
 
-    "alwaysStrict": true,
     "newLine": "LF",
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
@@ -24,13 +21,15 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
+    "noFallthroughCasesInSwitch": true,
+
 
     "plugins": [
       { "name": "typescript-tslint-plugin" }
     ]
   },
   "include": [
-    "./src/**/*"
+    "./**/*"
   ],
   "exclude": [
     "node_modules"
