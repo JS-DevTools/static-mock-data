@@ -2,7 +2,7 @@
  * This script exposes test dependencies as globals. This saves us from having to `require()`
  * them in every spec file, and also allows the same spec files to work in Node.js and web browsers.
  */
-(function () {
+(() => {
   "use strict";
 
   if (host.browser) {
@@ -27,7 +27,7 @@
    * @returns {object[]}
    */
   function requireJSON (filename) {
-    var json;
+    let json;
 
     if (window.__karma__) {
       filename = "/base/tests/" + filename;
@@ -37,7 +37,7 @@
       url: filename,
       async: false,
       dataType: "json",
-      success: function (response) {
+      success (response) {
         json = response;
       }
     });
@@ -45,4 +45,4 @@
     return json;
   }
 
-}());
+})();

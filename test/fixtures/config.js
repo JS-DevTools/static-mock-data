@@ -1,4 +1,4 @@
-(function () {
+(() => {
   "use strict";
 
   if (host.browser) {
@@ -9,4 +9,4 @@
     mocha.globals([]);
   }
 
-}());
+})();

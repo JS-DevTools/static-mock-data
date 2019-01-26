@@ -40,7 +40,7 @@ The mock data can be used as plain JSON or as JavaScript arrays of objects.
 ##### Raw JSON
 ```javascript
 var employeeJSON = require('static-mock-data/employees.json');
-employeeJSON.forEach(function(employee) {
+employeeJSON.forEach((employee) => {
   console.log(employee.dob);        // string (in ISO 8601 zulu format)
   console.log(employee.portrait);   // relative file path
 });
@@ -49,7 +49,7 @@ employeeJSON.forEach(function(employee) {
 ##### JavaScript Objects
 ```javascript
 var mockData = require('static-mock-data');
-mockData.employees.forEach(function(employee) {
+mockData.employees.forEach((employee) => {
   console.log(employee.dob);        // Date object
   console.log(employee.portrait);   // absolute file path
 });
@@ -62,7 +62,7 @@ Reference [`static-mock-data.js`](dist/static-mock-data.js) or [`static-mock-dat
 ```html
 <script src="https://cdn.rawgit.com/JS-DevTools/static-mock-data/master/dist/static-mock-data.js"></script>
 <script>
-  mock.data.employees.forEach(function(employee) {
+  mock.data.employees.forEach((employee) => {
     console.log(employee.dob);    // Date object
   });
 </script>

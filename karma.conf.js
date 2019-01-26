@@ -1,31 +1,31 @@
 // Karma config
 // https://karma-runner.github.io/0.12/config/configuration-file.html
 
-'use strict';
+"use strict";
 
 module.exports = function (karma) {
-  var config = {
-    frameworks: ['mocha', 'jquery-chai', 'host-environment'],
-    reporters: ['verbose'],
+  let config = {
+    frameworks: ["mocha", "jquery-chai", "host-environment"],
+    reporters: ["verbose"],
 
     files: [
       // Mock Data
-      'out/static-mock-data.min.js',
-      { pattern: 'out/*.map', included: false, served: true },
-      { pattern: '*.json', included: false, served: true },
+      "out/static-mock-data.min.js",
+      { pattern: "out/*.map", included: false, served: true },
+      { pattern: "*.json", included: false, served: true },
 
       // Test Fixtures
-      'test/fixtures/*.js',
+      "test/fixtures/*.js",
 
       // Test Specs
-      'test/specs/*.js'
+      "test/specs/*.js"
     ]
   };
 
   configureCodeCoverage(config);
   configureBrowsers(config);
 
-  console.log('Karma Config:\n', JSON.stringify(config, null, 2));
+  console.log("Karma Config:\n", JSON.stringify(config, null, 2));
   karma.set(config);
 };
 
@@ -46,7 +46,7 @@ function configureCodeCoverage (config) {
     ]
   };
 
-  config.files = config.files.map(function (file) {
+  config.files = config.files.map((file) => {
     if (typeof file === "string") {
       file = file.replace(/^dist\/(.*?)(\.min)?\.js$/, "dist/$1.coverage.js");
     }
@@ -95,7 +95,7 @@ function configureSauceLabs (config) {
   let accessKey = process.env.SAUCE_ACCESS_KEY;
 
   if (!username || !accessKey) {
-    throw new Error(`SAUCE_USERNAME and/or SAUCE_ACCESS_KEY is not set`);
+    throw new Error("SAUCE_USERNAME and/or SAUCE_ACCESS_KEY is not set");
   }
 
   let project = require("./package.json");
@@ -123,7 +123,7 @@ function configureSauceLabs (config) {
   config.browsers = Object.keys(config.customLaunchers);
   // config.concurrency = 1;
   config.captureTimeout = 60000;
-  config.browserDisconnectTolerance = 5,
+  config.browserDisconnectTolerance = 5;
   config.browserDisconnectTimeout = 60000;
   config.browserNoActivityTimeout = 60000;
   config.logLevel = "debug";
