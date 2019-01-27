@@ -45,7 +45,7 @@ describe("projects", () => {
           }
           else {
             expect(project.startedOn).to.be.a("date").and.not.satisfy(isNaN);
-            if (project.endedOn !== null) {
+            if (project.endedOn) {
               expect(project.endedOn).to.be.a("date").and.not.satisfy(isNaN);
             }
           }
@@ -71,13 +71,13 @@ describe("projects", () => {
           project.assigned.forEach((username) => {
             let employee = mock.data.employees.find((emp) => emp.username === username);
 
-            if (project.endedOn !== null) {
+            if (project.endedOn) {
               let hired = new Date(employee.hiredOn).getTime();
               let ended = new Date(project.endedOn).getTime();
               expect(hired).to.be.below(ended);
             }
 
-            if (employee.terminatedOn !== null) {
+            if (employee.terminatedOn) {
               let terminated = new Date(employee.terminatedOn).getTime();
               let started = new Date(project.startedOn).getTime();
               expect(terminated).to.be.above(started);

@@ -71,14 +71,14 @@ describe("employees", () => {
           if (isJSON) {
             expect(employee.dob).to.be.a("string").and.not.empty;
             expect(employee.hiredOn).to.be.a("string").and.not.empty;
-            if (employee.terminatedOn !== null) {
+            if (employee.terminatedOn) {
               expect(employee.terminatedOn).to.be.a("string").and.not.empty;
             }
           }
           else {
             expect(employee.dob).to.be.a("date").and.not.satisfy(isNaN);
             expect(employee.hiredOn).to.be.a("date").and.not.satisfy(isNaN);
-            if (employee.terminatedOn !== null) {
+            if (employee.terminatedOn) {
               expect(employee.terminatedOn).to.be.a("date").and.not.satisfy(isNaN);
             }
           }
@@ -118,7 +118,7 @@ describe("employees", () => {
 
       it("should not be terminated before being hired", () => {
         employees.forEach((employee) => {
-          if (employee.terminatedOn !== null) {
+          if (employee.terminatedOn) {
             let hired = new Date(employee.hiredOn).getTime();
             let terminated = new Date(employee.terminatedOn).getTime();
             expect(terminated).to.be.above(hired);
