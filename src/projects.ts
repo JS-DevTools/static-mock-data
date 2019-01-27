@@ -1,5 +1,13 @@
+// @ts-ignore - TypeScript can't find this file because it's not in the src directory
+import json from "../projects.json";
+
 /**
- * A raw Project record, directly from the "projects.json" file
+ * An array of raw Project objects, directly from the "projects.json" file.
+ */
+export const jsonProjects = json as JsonProject[];
+
+/**
+ * A raw Project object, directly from the "projects.json" file
  */
 export interface JsonProject extends ProjectBase {
   startedOn: string;
@@ -7,7 +15,7 @@ export interface JsonProject extends ProjectBase {
 }
 
 /**
- * A Project record, as exposed by the Static Mock Data API
+ * A Project object, as exposed by the Static Mock Data API
  */
 export interface Project extends ProjectBase {
   startedOn: Date;

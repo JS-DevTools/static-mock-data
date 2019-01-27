@@ -1,5 +1,13 @@
+// @ts-ignore - TypeScript can't find this file because it's not in the src directory
+import json from "../employees.json";
+
 /**
- * A raw Employee record, directly from the "employees.json" file
+ * An array of raw Employee objects, directly from the "employees.json" file.
+ */
+export const jsonEmployees = json as JsonEmployee[];
+
+/**
+ * A raw Employee object, directly from the "employees.json" file
  */
 export interface JsonEmployee extends EmployeeBase {
   dob: string;
@@ -8,7 +16,7 @@ export interface JsonEmployee extends EmployeeBase {
 }
 
 /**
- * An Employee record, as exposed by the Static Mock Data API
+ * An Employee object, as exposed by the Static Mock Data API
  */
 export interface Employee extends EmployeeBase {
   dob: Date;
@@ -30,7 +38,7 @@ interface EmployeeBase {
   email: string;
   phones: Array<{
     type: string;
-    number: string
+    number: string;
   }>;
   address: {
     street: string;

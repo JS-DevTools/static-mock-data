@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "resolveJsonModule": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,      // Allows us to import JSON files in both CJS and ESM
     "lib": [
       "esnext",
       "dom"
@@ -23,13 +23,12 @@
     "stripInternal": true,
     "noFallthroughCasesInSwitch": true,
 
-
     "plugins": [
       { "name": "typescript-tslint-plugin" }
     ]
   },
   "include": [
-    "./**/*"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules"
