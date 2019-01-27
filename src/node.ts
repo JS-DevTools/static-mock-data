@@ -1,15 +1,20 @@
-// Start with the same data as the browser version
-import { employees, projects } from "./browser";
+import { resolve } from "path";
+import { jsonEmployees } from "./employees";
+import { enrichEmployees, enrichProjects } from "./enrich-json";
+import { jsonProjects } from "./projects";
 
-// But make the image paths absolute, since we're running in Node.js
-import * as path from "path";
+export { Employee, JsonEmployee } from "./employees";
+export { JsonProject, Project } from "./projects";
 
-employees.forEach((employee: any) => {
-  employee.portrait = path.resolve(__dirname, "../..", employee.portrait);
-  employee.thumbnail = path.resolve(__dirname, "../..", employee.thumbnail);
-});
+/**
+ * An array of Employee objects. Unlike the raw JSON employee data,
+ * the date fields of these objects are `Date` objects rather than strings,
+ * and the image paths are fully resolved.
+ */
+export const employees = enrichEmployees(jsonEmployees, resolve);
 
-export {
-  employees,
-  projects
-};
+/**
+ * An array of Project objects. Unlike the raw JSON project data,
+ * the date fields of these objects are `Date` objects rather than strings.
+ */
+export const projects = enrichProjects(jsonProjects);
