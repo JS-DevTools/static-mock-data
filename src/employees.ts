@@ -1,10 +1,28 @@
-// @ts-ignore - TypeScript can't find this file because it's not in the src directory
-import json from "../employees.json";
+// @ts-ignore - Prevent TypeScript from copying the JSON file to the output folder
+import jsonEmployees from "../employees.json";
+import { deepClone } from "./deep-clone.js";
+import { resolve } from "./node";
 
 /**
- * An array of raw Employee objects, directly from the "employees.json" file.
+ * An array of Employee objects. Unlike the raw JSON employee data,
+ * the date fields of these objects are `Date` objects rather than strings,
+ * and the image paths are fully resolved.
  */
-export const jsonEmployees = json as JsonEmployee[];
+export const employees: Employee[] = [];
+
+for (let jsonEmployee of jsonEmployees as JsonEmployee[]) {
+  // Deep-clone the JSON data, so we don't modify the original objects
+  // (in case the consumer wants to use both the raw and enriched objects)
+  jsonEmployee = deepClone(jsonEmployee);
+
+  employees.push(Object.assign({}, jsonEmployee, {
+    dob: new Date(jsonEmployee.dob),
+    hiredOn: new Date(jsonEmployee.hiredOn),
+    terminatedOn: jsonEmployee.terminatedOn ? new Date(jsonEmployee.terminatedOn) : undefined,
+    portrait: resolve(jsonEmployee.portrait),
+    thumbnail: resolve(jsonEmployee.thumbnail),
+  }));
+}
 
 /**
  * A raw Employee object, directly from the "employees.json" file

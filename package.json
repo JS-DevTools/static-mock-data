@@ -23,14 +23,17 @@
     "type": "git",
     "url": "https://github.com/JS-DevTools/static-mock-data.git"
   },
-  "main": "cjs/src/node.js",
-  "module": "esm/src/browser.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
+  "browser": {
+    "./src/node.ts": "./src/browser.ts",
+    "./cjs/node.js": "./cjs/browser.js",
+    "./esm/node.js": "./esm/browser.js"
+  },
   "files": [
-    "dist/static-mock-data.js",
-    "dist/static-mock-data.js.map",
-    "dist/static-mock-data.min.js",
-    "dist/static-mock-data.min.js.map",
-    "lib",
+    "cjs",
+    "esm",
     "portraits",
     "employees.json",
     "projects.json"
