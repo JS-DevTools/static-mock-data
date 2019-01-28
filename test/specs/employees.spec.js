@@ -9,6 +9,23 @@ describe("employees", () => {
 
   it("should be two separate data sources", () => {
     expect(mock.data.employees).not.to.equal(employeeJSON);
+
+    for (let i = 0; i < mock.data.employees.length; i++) {
+      let employee = mock.data.employees[i];
+      let jsonEmployee = employeeJSON[i];
+
+      // Nested objects/arrays should contain the same data
+      expect(employee.name).not.to.equal(jsonEmployee.name);
+      expect(employee.phones).not.to.equal(jsonEmployee.phones);
+      expect(employee.address).not.to.equal(jsonEmployee.address);
+      expect(employee.roles).not.to.equal(jsonEmployee.roles);
+
+      // ... but should NOT be the same instances
+      expect(employee.name).to.deep.equal(jsonEmployee.name);
+      expect(employee.phones).to.deep.equal(jsonEmployee.phones);
+      expect(employee.address).to.deep.equal(jsonEmployee.address);
+      expect(employee.roles).to.deep.equal(jsonEmployee.roles);
+    }
   });
 
   [employeeJSON, mock.data.employees].forEach((employees) => {

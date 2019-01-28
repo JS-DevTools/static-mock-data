@@ -3,6 +3,17 @@ describe("projects", () => {
 
   it("should be two separate data sources", () => {
     expect(mock.data.projects).not.to.equal(projectJSON);
+
+    for (let i = 0; i < mock.data.projects.length; i++) {
+      let project = mock.data.projects[i];
+      let jsonProject = projectJSON[i];
+
+      // Nested objects/arrays should contain the same data
+      expect(project.assigned).not.to.equal(jsonProject.assigned);
+
+      // ... but should NOT be the same instances
+      expect(project.assigned).to.deep.equal(jsonProject.assigned);
+    }
   });
 
   [projectJSON, mock.data.projects].forEach((projects) => {
