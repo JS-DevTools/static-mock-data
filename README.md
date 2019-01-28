@@ -14,8 +14,8 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 
 Features
 --------------------------
-* __[100 mock employees](https://raw.githubusercontent.com/James-Mesinger/static-mock-data/master/employees.json)__, with names, addresses, phone numbers, etc.
-* __[100 mock projects](https://raw.githubusercontent.com/James-Mesinger/static-mock-data/master/projects.json)__, with names, dates, departments, employees assigned, etc.
+* __[100 mock employees](https://raw.githubusercontent.com/JS-DevTools/static-mock-data/master/employees.json)__, with names, addresses, phone numbers, etc.
+* __[100 mock projects](https://raw.githubusercontent.com/JS-DevTools/static-mock-data/master/projects.json)__, with names, dates, departments, employees assigned, etc.
 * __[Full-size](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe.jpg)__ and __[thumbnail](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe-thumb.jpg)__ photos for each employee
 * No dependencies
 * [Tested](https://jsdevtools.org/static-mock-data/test/) in Node.js and all modern web browsers on Mac, Windows, and Linux
