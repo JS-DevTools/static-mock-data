@@ -9,7 +9,6 @@ Thumbs.db
 .netbeans
 nbproject
 .node_history
-.rpt2_cache
 
 # IDEs & Text Editors
 .idea
@@ -38,6 +37,9 @@ node_modules
 
 # Test output
 /.nyc_output
+/.rpt2_cache
 /coverage
-/dist/*.coverage.js
-/test/dir/**/*symlink*
+
+# Build output
+/cjs
+/esm

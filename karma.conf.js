@@ -10,8 +10,7 @@ module.exports = function (karma) {
 
     files: [
       // Mock Data
-      "out/static-mock-data.min.js",
-      { pattern: "out/*.map", included: false, served: true },
+      "src/index.ts",
       { pattern: "*.json", included: false, served: true },
 
       // Test Fixtures
@@ -19,7 +18,38 @@ module.exports = function (karma) {
 
       // Test Specs
       "test/specs/*.js"
-    ]
+    ],
+
+    preprocessors: {
+      "src/index.ts": ["rollup"],
+    },
+
+    rollupPreprocessor: {
+      plugins: [
+        require("rollup-plugin-node-resolve")({
+          browser: true,
+          extensions: [".ts", ".json"],
+        }),
+        require("rollup-plugin-json")(),
+        require("rollup-plugin-typescript2")(),
+        // require("rollup-plugin-istanbul")({
+        //   // sourceMap: true,
+        //   // instrumenterConfig: {
+        //   //   compact: false,
+        //   //   produceSourceMap: true,
+        //   // },
+        // }),
+      ],
+      output: {
+        format: "iife",
+        name: "mock.data",
+        sourcemap: "inline",
+      }
+    },
+
+    mime: {
+      "text/x-typescript": ["ts"]
+    }
   };
 
   configureCodeCoverage(config);
@@ -48,7 +78,7 @@ function configureCodeCoverage (config) {
 
   config.files = config.files.map((file) => {
     if (typeof file === "string") {
-      file = file.replace(/^dist\/(.*?)(\.min)?\.js$/, "dist/$1.coverage.js");
+      file = file.replace(/^dist\/(.*?)(\.min)?\.js$/, ".tmp/$1.coverage.js");
     }
     return file;
   });
