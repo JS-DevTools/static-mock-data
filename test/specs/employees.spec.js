@@ -1,17 +1,17 @@
 describe("employees", () => {
   "use strict";
 
-  let path, fs;
-  if (host.node) {
-    path = require("path");
-    fs = require("fs");
-  }
+  // All tests should pass for both the raw JSON files and the API
+  let dataSources = [
+    { isJSON: true, data: () => host.global.employeeJSON },
+    { isJSON: false, data: () => host.global.staticMockData.employees },
+  ];
 
   it("should be two separate data sources", () => {
-    expect(mock.data.employees).not.to.equal(employeeJSON);
+    expect(staticMockData.employees).not.to.equal(employeeJSON);
 
-    for (let i = 0; i < mock.data.employees.length; i++) {
-      let employee = mock.data.employees[i];
+    for (let i = 0; i < staticMockData.employees.length; i++) {
+      let employee = staticMockData.employees[i];
       let jsonEmployee = employeeJSON[i];
 
       // Nested objects/arrays should contain the same data
@@ -28,8 +28,13 @@ describe("employees", () => {
     }
   });
 
-  [employeeJSON, mock.data.employees].forEach((employees) => {
-    let isJSON = employees === employeeJSON;
+  for (let dataSource of dataSources) {
+    let isJSON = dataSource.isJSON;
+    let employees;
+
+    before("Get employees from data source", () => {
+      employees = dataSource.data();
+    });
 
     describe(isJSON ? "JSON" : "JavaScript", () => {
       it("should have 102 employees", () => {
@@ -114,6 +119,9 @@ describe("employees", () => {
       it("should have the correct paths to portrait images", () => {
         employees.forEach((employee) => {
           if (host.node) {
+            const path = require("path");
+            const fs = require("fs");
+
             if (isJSON) {
               expect(employee.portrait).not.to.satisfy(path.isAbsolute);
               expect(employee.thumbnail).not.to.satisfy(path.isAbsolute);
@@ -184,5 +192,5 @@ describe("employees", () => {
         });
       });
     });
-  });
+  }
 });

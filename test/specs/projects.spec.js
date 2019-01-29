@@ -1,11 +1,17 @@
 describe("projects", () => {
   "use strict";
 
-  it("should be two separate data sources", () => {
-    expect(mock.data.projects).not.to.equal(projectJSON);
+  // All tests should pass for both the raw JSON files and the API
+  let dataSources = [
+    { isJSON: true, data: () => host.global.projectJSON },
+    { isJSON: false, data: () => host.global.staticMockData.projects },
+  ];
 
-    for (let i = 0; i < mock.data.projects.length; i++) {
-      let project = mock.data.projects[i];
+  it("should be two separate data sources", () => {
+    expect(staticMockData.projects).not.to.equal(projectJSON);
+
+    for (let i = 0; i < staticMockData.projects.length; i++) {
+      let project = staticMockData.projects[i];
       let jsonProject = projectJSON[i];
 
       // Nested objects/arrays should contain the same data
@@ -16,8 +22,13 @@ describe("projects", () => {
     }
   });
 
-  [projectJSON, mock.data.projects].forEach((projects) => {
-    let isJSON = projects === projectJSON;
+  for (let dataSource of dataSources) {
+    let isJSON = dataSource.isJSON;
+    let projects;
+
+    before("Get projects from data source", () => {
+      projects = dataSource.data();
+    });
 
     describe(isJSON ? "JSON" : "JavaScript", () => {
       it("should have 100 projects", () => {
@@ -70,7 +81,7 @@ describe("projects", () => {
       it("should only have employees from the same department", () => {
         projects.forEach((project) => {
           project.assigned.forEach((username) => {
-            let employee = mock.data.employees.find((emp) => emp.username === username);
+            let employee = staticMockData.employees.find((emp) => emp.username === username);
 
             expect(employee.department).to.equal(project.department);
           });
@@ -80,7 +91,7 @@ describe("projects", () => {
       it("should only have employees that were employed during the project timeframe", () => {
         projects.forEach((project) => {
           project.assigned.forEach((username) => {
-            let employee = mock.data.employees.find((emp) => emp.username === username);
+            let employee = staticMockData.employees.find((emp) => emp.username === username);
 
             if (project.endedOn) {
               let hired = new Date(employee.hiredOn).getTime();
@@ -97,5 +108,5 @@ describe("projects", () => {
         });
       });
     });
-  });
+  }
 });
