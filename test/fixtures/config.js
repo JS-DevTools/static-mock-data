@@ -6,7 +6,7 @@
     mocha.setup("bdd");
     mocha.fullTrace();
     mocha.checkLeaks();
-    mocha.globals([]);
+    mocha.globals(["employeeJSON", "projectJSON"]);
   }
 
 })();

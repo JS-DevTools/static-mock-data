@@ -1,47 +1,39 @@
-/**
- * This script exposes test dependencies as globals. This saves us from having to `require()`
- * them in every spec file, and also allows the same spec files to work in Node.js and web browsers.
- */
 (() => {
   "use strict";
 
-  if (host.browser) {
-    // Define globals for web browsers
-    host.global.expect = chai.expect;
-    host.global.employeeJSON = requireJSON("../employees.json");
-    host.global.projectJSON = requireJSON("../projects.json");
-  }
-  else {
-    // Define globals for Node.js
-    host.global.employeeJSON = require("../../employees.json");
-    host.global.projectJSON = require("../../projects.json");
-    host.global.mock = { data: require("../../") };
-    host.global.expect = require("chai").expect;
-    require("chai").should();
-  }
+  /**
+   * Expose test dependencies as globals. This saves us from having to `require()`
+   * them in every spec file, and also allows the same spec files to work in Node.js and web browsers.
+   */
+  before("Set globals", async () => {
+    if (host.browser) {
+      // Define globals for web browsers
+      host.global.expect = chai.expect;
+      host.global.employeeJSON = await fetchJSON("/base/employees.json");
+      host.global.projectJSON = await fetchJSON("/base/projects.json");
+    }
+    else {
+      // Define globals for Node.js
+      host.global.employeeJSON = require("../../employees.json");
+      host.global.projectJSON = require("../../projects.json");
+      host.global.staticMockData = require("../../");
+      host.global.expect = require("chai").expect;
+    }
+  });
 
   /**
-   * Synchronously loads a JSON file in a web browser, via JQuery
+   * Fetches a JSON file in a web browser
    *
-   * @param {string} filename
-   * @returns {object[]}
+   * @param {string} url
+   * @returns {Promise<object[]>}
    */
-  function requireJSON (filename) {
-    let json;
-
-    if (host.karma) {
-      filename = "/base/tests/" + filename;
+  async function fetchJSON (url) {
+    let response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} Error while downloading ${url}`);
     }
 
-    $.ajax({
-      url: filename,
-      async: false,
-      dataType: "json",
-      success (response) {
-        json = response;
-      }
-    });
-
+    let json = await response.json();
     return json;
   }
 
