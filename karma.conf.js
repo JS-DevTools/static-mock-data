@@ -5,7 +5,7 @@
 
 module.exports = function (karma) {
   let config = {
-    frameworks: ["mocha", "jquery-chai", "host-environment"],
+    frameworks: ["mocha", "chai", "host-environment"],
     reporters: ["verbose"],
 
     files: [
@@ -20,36 +20,29 @@ module.exports = function (karma) {
       "test/specs/*.js"
     ],
 
-    preprocessors: {
-      "src/index.ts": ["rollup"],
-    },
-
-    rollupPreprocessor: {
-      plugins: [
-        require("rollup-plugin-node-resolve")({
-          browser: true,
-          extensions: [".ts", ".json"],
-        }),
-        require("rollup-plugin-json")(),
-        require("rollup-plugin-typescript2")(),
-        // require("rollup-plugin-istanbul")({
-        //   // sourceMap: true,
-        //   // instrumenterConfig: {
-        //   //   compact: false,
-        //   //   produceSourceMap: true,
-        //   // },
-        // }),
-      ],
-      output: {
-        format: "iife",
-        name: "mock.data",
-        sourcemap: "inline",
-      }
-    },
-
     mime: {
-      "text/x-typescript": ["ts"]
-    }
+      "text/x-typescript": ["ts", "tsx"]
+    },
+
+    preprocessors: {
+      "src/index.ts": ["webpack"],
+    },
+
+    webpack: {
+      mode: "development",
+      devtool: "inline-source-map",
+      output: {
+        library: "staticMockData",
+      },
+      resolve: {
+        extensions: [".ts", ".tsx", ".js", ".mjs", ".json"],
+      },
+      module: {
+        rules: [
+          { test: /\.tsx?$/, use: "ts-loader" },
+        ],
+      },
+    },
   };
 
   configureCodeCoverage(config);
@@ -68,19 +61,22 @@ function configureCodeCoverage (config) {
     return;
   }
 
-  config.reporters.push("coverage");
-  config.coverageReporter = {
-    reporters: [
-      { type: "text-summary" },
-      { type: "lcov" }
-    ]
+  config.reporters.push("coverage-istanbul");
+
+  config.coverageIstanbulReporter = {
+    dir: "coverage/%browser%",
+    reports: ["text-summary", "lcov"],
   };
 
-  config.files = config.files.map((file) => {
-    if (typeof file === "string") {
-      file = file.replace(/^dist\/(.*?)(\.min)?\.js$/, ".tmp/$1.coverage.js");
+  config.webpack.module.rules.push({
+    test: /\.tsx?$/,
+    enforce: "post",
+    use: {
+      loader: "istanbul-instrumenter-loader",
+      options: {
+        esModules: true,
+      },
     }
-    return file;
   });
 }
 

@@ -10,8 +10,3 @@ extends:
   - modular/browser
   - modular/node
   - modular/es6
-
-overrides:
-  - files: rollup.config.js
-    parserOptions:
-      sourceType: module
