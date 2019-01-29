@@ -1,6 +1,6 @@
 // @ts-ignore - Prevent TypeScript from copying the JSON file to the output folder
 import jsonProjects from "../projects.json";
-import { deepClone } from "./deep-clone.js";
+import { deepClone } from "./deep-clone";
 
 /**
  * An array of Project objects. Unlike the raw JSON project data,
