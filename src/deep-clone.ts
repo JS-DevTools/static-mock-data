@@ -6,7 +6,8 @@ type ObjectOrArray = Record<string | number, unknown>;
 export function deepClone<T extends ObjectOrArray>(obj: T): T  {
   let clone: ObjectOrArray = Array.isArray(obj) ? [] : {};
 
-  for (let [key, value] of Object.entries(obj)) {
+  for (let key of Object.keys(obj)) {
+    let value = obj[key];
     if (typeof value === "object" && value) {
       value = deepClone(value);
     }
