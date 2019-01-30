@@ -37,7 +37,7 @@ function normalizeOptions (options) {
     typescript,
     coverage: options.coverage === undefined ? process.argv.includes("--coverage") : Boolean(options.coverage),
     testFiles: arrayify(options.testFiles) || [`${testDir}/**/*.+(spec|test).+(js|jsx)`],
-    serveFiles: arrayify(options.serveFiles) || ["**/*"],
+    serveFiles: arrayify(options.serveFiles) || [`${testDir}/**/*`],
   };
 }
 
