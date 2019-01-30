@@ -1,5 +1,5 @@
 Static mock data
-------------------------------
+==============================
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
 [![Build Status](https://api.travis-ci.com/JS-DevTools/static-mock-data.svg?branch=master)](https://travis-ci.com/JS-DevTools/static-mock-data)
