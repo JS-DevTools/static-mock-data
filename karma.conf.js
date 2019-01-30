@@ -3,81 +3,156 @@
 
 "use strict";
 
-module.exports = function (karma) {
-  let config = {
+module.exports = karmaConfig({
+  typescript: true,
+});
+
+function karmaConfig (options) {
+  options = normalizeOptions(options);
+
+  let config = mergeConfig(options.config, {
     frameworks: ["mocha", "chai", "host-environment"],
     reporters: ["verbose"],
+    files: options.testFiles.concat(options.serveFiles.map(serveFile)),
+  });
 
-    files: [
-      // Mock Data
-      "src/index.ts",
-      { pattern: "*.json", included: false, served: true },
+  configureWebpack(config, options);
+  configureBrowsers(config, options);
 
-      // Test Fixtures
-      "test/fixtures/*.js",
-
-      // Test Specs
-      "test/specs/*.js"
-    ],
-
-    mime: {
-      "text/x-typescript": ["ts", "tsx"]
-    },
-
-    preprocessors: {
-      "src/index.ts": ["webpack"],
-    },
-
-    webpack: {
-      mode: "development",
-      devtool: "inline-source-map",
-      output: {
-        library: "staticMockData",
-      },
-      resolve: {
-        extensions: [".ts", ".tsx", ".js", ".mjs", ".json"],
-      },
-      module: {
-        rules: [
-          { test: /\.tsx?$/, use: "ts-loader" },
-        ],
-      },
-    },
-  };
-
-  configureCodeCoverage(config);
-  configureBrowsers(config);
+  options.typescript && configureTypescript(config, options);
+  options.coverage && configureCoverage(config, options);
 
   console.log("Karma Config:\n", JSON.stringify(config, null, 2));
-  karma.set(config);
-};
+  return (karma) => karma.set(config);
+}
 
-/**
- * Configures the code-coverage reporter
- */
-function configureCodeCoverage (config) {
-  if (process.argv.indexOf("--coverage") === -1) {
-    console.warn("Code-coverage is not enabled");
-    return;
+function normalizeOptions (options) {
+  let typescript = options.typescript === undefined ? true : Boolean(options.typescript);
+  let sourceDir = options.sourceDir === undefined ? typescript ? "src" : "lib" : String(options.sourceDir);
+  let testDir = options.testDir === undefined ? "test" : String(options.testDir);
+
+  return {
+    sourceDir,
+    testDir,
+    typescript,
+    coverage: options.coverage === undefined ? process.argv.includes("--coverage") : Boolean(options.coverage),
+    testFiles: arrayify(options.testFiles) || [`${testDir}/**/*.+(spec|test).+(js|jsx)`],
+    serveFiles: arrayify(options.serveFiles) || ["**/*"],
+  };
+}
+
+function configureWebpack (config, options) {
+  config.preprocessors = mergeConfig(config.preprocessors, {
+    [`${options.testDir}/**/*.+(spec|test).+(js|jsx)`]: ["webpack"],
+  });
+
+  config.webpack = mergeConfig(config.webpack, {
+    mode: "development",
+    devtool: "inline-source-map",
+  });
+
+  config.webpack.module = mergeConfig(config.webpack.module, {
+    rules: [],
+  });
+}
+
+function configureTypescript (config) {
+  const tsExtensions = ["ts", "tsx"];
+
+  config.mime = mergeConfig(config.mime, {
+    "text/x-typescript": tsExtensions,
+  });
+
+  config.webpack.resolve = mergeConfig(config.webpack.resolve, {
+    extensions: [".js", ".jsx", ".mjs", ".json"],
+  });
+
+  for (let ext of tsExtensions) {
+    if (!config.webpack.resolve.extensions.includes("." + ext)) {
+      config.webpack.resolve.extensions.push("." + ext);
+    }
   }
 
-  config.reporters.push("coverage-istanbul");
+  if (!hasWebpackLoader(config.webpack.module.rules, "ts-loader")) {
+    // Insert the ts-loader at the beginning of the rules list
+    config.webpack.module.rules.unshift({ test: /\.tsx?$/, use: "ts-loader" });
+  }
+}
 
-  config.coverageIstanbulReporter = {
+function configureCoverage (config, options) {
+  if (!config.reporters.includes("coverage-istanbul")) {
+    config.reporters.push("coverage-istanbul");
+  }
+
+  config.coverageIstanbulReporter = mergeConfig(config.coverageIstanbulReporter, {
     dir: "coverage/%browser%",
     reports: ["text-summary", "lcov"],
-  };
-
-  config.webpack.module.rules.push({
-    test: /\.tsx?$/,
-    enforce: "post",
-    use: {
-      loader: "istanbul-instrumenter-loader",
-      options: {
-        esModules: true,
-      },
-    }
   });
+
+  if (!hasWebpackLoader(config.webpack.module.rules, "istanbul-instrumenter-loader")) {
+    config.webpack.module.rules.push({
+      test: options.typescript ? /\.tsx?$/ : /\.jsx?$/,
+      include: new RegExp(options.sourceDir.replace(/\//g, "\/")),
+      exclude: /node_modules|\.spec\.|\.test\./,
+      enforce: "post",
+      use: {
+        loader: "istanbul-instrumenter-loader",
+        options: {
+          esModules: true,
+        },
+      }
+    });
+  }
+}
+
+function mergeConfig (config, defaults) {
+  config = config || {};
+
+  for (let key of Object.keys(defaults)) {
+    let defaultValue = defaults[key];
+
+    if (config[key] === undefined) {
+      config[key] = defaultValue;
+    }
+  }
+
+  return config;
+}
+
+function arrayify (value) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+  else if (value) {
+    return [value];
+  }
+}
+
+function serveFile (file) {
+  if (typeof file === "string") {
+    return { pattern: file, included: false, served: true };
+  }
+  else {
+    file.served = true;
+    return file;
+  }
+}
+
+function hasWebpackLoader (rules, name) {
+  for (let rule of rules) {
+    if (rule && rule.use) {
+      if (rule.use === name || rule.use.loader === name) {
+        return true;
+      }
+
+      if (Array.isArray(rule.use)) {
+        let found = hasWebpackLoader(rule.use, name);
+        if (found) {
+          return true;
+        }
+      }
+    }
+  }
 }
 
 /**
