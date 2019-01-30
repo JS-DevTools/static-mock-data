@@ -37,7 +37,6 @@ node_modules
 
 # Test output
 /.nyc_output
-/.rpt2_cache
 /coverage
 
 # Build output
