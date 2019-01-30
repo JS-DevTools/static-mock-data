@@ -1,12 +1,10 @@
+"use strict";
+
+const staticMockData = require("../../");
+const projectJSON = require("../../projects.json");
+const { expect } = require("chai");
+
 describe("projects", () => {
-  "use strict";
-
-  // All tests should pass for both the raw JSON files and the API
-  let dataSources = [
-    { isJSON: true, data: () => host.global.projectJSON },
-    { isJSON: false, data: () => host.global.staticMockData.projects },
-  ];
-
   it("should be two separate data sources", () => {
     expect(staticMockData.projects).not.to.equal(projectJSON);
 
@@ -22,13 +20,8 @@ describe("projects", () => {
     }
   });
 
-  for (let dataSource of dataSources) {
-    let isJSON = dataSource.isJSON;
-    let projects;
-
-    before("Get projects from data source", () => {
-      projects = dataSource.data();
-    });
+  for (let projects of [staticMockData.projects, projectJSON]) {
+    let isJSON = projects === projectJSON;
 
     describe(isJSON ? "JSON" : "JavaScript", () => {
       it("should have 100 projects", () => {

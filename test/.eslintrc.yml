@@ -4,14 +4,8 @@
 
 extends:
   - modular/test
-  - modular/browser
 
 globals:
-  # static-mock-data
-  staticMockData: false
-  employeeJSON: false
-  projectJSON: false
-
   # karma-host-environment
   # https://www.npmjs.com/package/karma-host-environment
   host: false
