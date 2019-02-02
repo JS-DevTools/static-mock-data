@@ -30,13 +30,7 @@ module.exports = (karma) => karma.set({
           include: /esm/,
           exclude: /node_modules|\.spec\.|\.test\./,
           enforce: "post",
-          use: {
-            loader: "istanbul-instrumenter-loader",
-            options: {
-              esModules: true,
-              produceSourceMap: true,
-            }
-          }
+          use: "coverage-istanbul-loader",
         }
       ]
     },
@@ -48,6 +42,7 @@ module.exports = (karma) => karma.set({
   ],
 
   coverageIstanbulReporter: {
+    skipFilesWithNoCoverage: true,
     dir: "coverage/%browser%",
     reports: [
       "text-summary",
