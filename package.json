@@ -64,7 +64,7 @@
     "eslint-config-modular": "^6.0.0",
     "karma": "^4.0.0",
     "karma-cli": "^2.0.0",
-    "karma-config": "^1.0.0",
+    "karma-config": "^1.1.0",
     "mocha": "^5.2.0",
     "npm-check": "^5.9.0",
     "nyc": "^13.1.0",

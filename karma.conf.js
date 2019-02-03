@@ -5,11 +5,4 @@
 "use strict";
 const karmaConfig = require("karma-config").default;
 
-module.exports = karmaConfig({
-  sourceDir: "esm",
-  // config: {
-  //   coverageIstanbulReporter: {
-  //     skipFilesWithNoCoverage: true,
-  //   }
-  // }
-});
+module.exports = karmaConfig({ sourceDir: "esm" });
