@@ -1,3 +1,2 @@
 --bail
---require karma-host-environment
 test/specs/**/*.spec.js

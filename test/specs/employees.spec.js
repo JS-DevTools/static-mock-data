@@ -3,6 +3,7 @@
 const staticMockData = require("../../");
 const employeeJSON = require("../../employees.json");
 const { expect } = require("chai");
+const host = require("host-environment");
 
 describe("employees", () => {
   it("should be two separate data sources", () => {

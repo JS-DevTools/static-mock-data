@@ -3,6 +3,6 @@
 // https://jsdevtools.org/karma-config/
 
 "use strict";
-const karmaConfig = require("karma-config").default;
+const { karmaConfig } = require("karma-config");
 
 module.exports = karmaConfig({ sourceDir: "esm" });
