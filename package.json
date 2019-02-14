@@ -27,7 +27,6 @@
   "module": "esm/index.js",
   "types": "esm/index.d.ts",
   "browser": {
-    "./src/node.ts": "./src/browser.ts",
     "./cjs/node.js": "./cjs/browser.js",
     "./esm/node.js": "./esm/browser.js"
   },
