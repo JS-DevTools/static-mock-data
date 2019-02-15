@@ -28,32 +28,37 @@ Features
     - Employees are only assigned to projects that occurred during their employment
 
 
-Usage in Node.js
+Installation
 -------------------------------------
-Install via [NPM](https://docs.npmjs.com/getting-started/what-is-npm):
+Install using [NPM](https://docs.npmjs.com/getting-started/what-is-npm) or [Yarn](https://yarnpkg.com):
 
 ```bash
 npm install static-mock-data
 ```
 
-The mock data can be used as plain JSON or as JavaScript arrays of objects.
 
-##### Raw JSON
+Usage
+-------------------------------------
+The mock data can be used as plain JSON or as JavaScript objects.
+
+### Raw JSON
 ```javascript
-var employeeJSON = require('static-mock-data/employees.json');
-employeeJSON.forEach((employee) => {
-  console.log(employee.dob);        // string (in ISO 8601 zulu format)
+const employees = require("static-mock-data/employees.json");
+
+for (let employee of employees) {
+  console.log(employee.dob);        // date string
   console.log(employee.portrait);   // relative file path
-});
+}
 ```
 
-##### JavaScript Objects
+### JavaScript Objects
 ```javascript
-var mockData = require('static-mock-data');
-mockData.employees.forEach((employee) => {
+const mockData = require("static-mock-data");
+
+for (let employee of mockData.employees) {
   console.log(employee.dob);        // Date object
   console.log(employee.portrait);   // absolute file path
-});
+}
 ```
 
 ### Browser support
