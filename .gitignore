@@ -38,5 +38,7 @@ node_modules
 # Test output
 /.nyc_output
 /coverage
-/dist/*.coverage.js
-/test/dir/**/*symlink*
+
+# Build output
+/cjs
+/esm

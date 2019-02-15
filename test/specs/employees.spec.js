@@ -1,56 +1,72 @@
-describe("employees", function () {
-  "use strict";
+"use strict";
 
-  var path, fs;
-  if (host.node) {
-    path = require("path");
-    fs = require("fs");
-  }
+const staticMockData = require("../../");
+const employeeJSON = require("../../employees.json");
+const { expect } = require("chai");
+const host = require("host-environment");
 
-  it("should be two separate data sources", function () {
-    expect(mock.data.employees).not.to.equal(employeeJSON);
+describe("employees", () => {
+  it("should be two separate data sources", () => {
+    expect(staticMockData.employees).not.to.equal(employeeJSON);
+
+    for (let i = 0; i < staticMockData.employees.length; i++) {
+      let employee = staticMockData.employees[i];
+      let jsonEmployee = employeeJSON[i];
+
+      // Nested objects/arrays should contain the same data
+      expect(employee.name).not.to.equal(jsonEmployee.name);
+      expect(employee.phones).not.to.equal(jsonEmployee.phones);
+      expect(employee.address).not.to.equal(jsonEmployee.address);
+      expect(employee.roles).not.to.equal(jsonEmployee.roles);
+
+      // ... but should NOT be the same instances
+      expect(employee.name).to.deep.equal(jsonEmployee.name);
+      expect(employee.phones).to.deep.equal(jsonEmployee.phones);
+      expect(employee.address).to.deep.equal(jsonEmployee.address);
+      expect(employee.roles).to.deep.equal(jsonEmployee.roles);
+    }
   });
 
-  [employeeJSON, mock.data.employees].forEach(function (employees) {
-    var isJSON = employees === employeeJSON;
+  for (let employees of [staticMockData.employees, employeeJSON]) {
+    let isJSON = employees === employeeJSON;
 
-    describe(isJSON ? "JSON" : "JavaScript", function () {
-      it("should have 102 employees", function () {
+    describe(isJSON ? "JSON" : "JavaScript", () => {
+      it("should have 102 employees", () => {
         expect(employees).to.have.lengthOf(102);
       });
 
-      it("should have an admin employee", function () {
-        var admin = employees.filter(function (employee) {
-          return employee.username === "admin" && employee.password === "admin";
-        });
+      it("should have an admin employee", () => {
+        let admin = employees.filter((employee) => (
+          employee.username === "admin" && employee.password === "admin"
+        ));
         expect(admin).to.have.lengthOf(1);
       });
 
-      it("should have a jdoe employee", function () {
-        var jdoe = employees.filter(function (employee) {
-          return employee.username === "jdoe" && employee.password === "jdoe";
-        });
+      it("should have a jdoe employee", () => {
+        let jdoe = employees.filter((employee) => (
+          employee.username === "jdoe" && employee.password === "jdoe"
+        ));
         expect(jdoe).to.have.lengthOf(1);
       });
 
-      it("all usernames should be unique", function () {
-        var usernames = [];
-        employees.forEach(function (employee) {
+      it("all usernames should be unique", () => {
+        let usernames = [];
+        employees.forEach((employee) => {
           expect(usernames).not.to.contain(employee.username);
           usernames.push(employee.username);
         });
       });
 
-      it("all SSNs should be unique", function () {
-        var ssns = [];
-        employees.forEach(function (employee) {
+      it("all SSNs should be unique", () => {
+        let ssns = [];
+        employees.forEach((employee) => {
           expect(ssns).not.to.contain(employee.ssn);
           ssns.push(employee.ssn);
         });
       });
 
-      it("should have valid data types for all fields", function () {
-        employees.forEach(function (employee) {
+      it("should have valid data types for all fields", () => {
+        employees.forEach((employee) => {
           expect(employee.username).to.be.a("string").and.not.empty;
           expect(employee.password).to.be.a("string").and.not.empty;
           expect(employee.name.first).to.be.a("string").and.not.empty;
@@ -71,32 +87,35 @@ describe("employees", function () {
           if (isJSON) {
             expect(employee.dob).to.be.a("string").and.not.empty;
             expect(employee.hiredOn).to.be.a("string").and.not.empty;
-            if (employee.terminatedOn !== null) {
+            if (employee.terminatedOn) {
               expect(employee.terminatedOn).to.be.a("string").and.not.empty;
             }
           }
           else {
             expect(employee.dob).to.be.a("date").and.not.satisfy(isNaN);
             expect(employee.hiredOn).to.be.a("date").and.not.satisfy(isNaN);
-            if (employee.terminatedOn !== null) {
+            if (employee.terminatedOn) {
               expect(employee.terminatedOn).to.be.a("date").and.not.satisfy(isNaN);
             }
           }
 
-          employee.phones.forEach(function (phone) {
+          employee.phones.forEach((phone) => {
             expect(phone.type).to.be.a("string").and.match(/^home|office|cell$/);
             expect(phone.number).to.be.a("string").and.match(/^\d{3}-\d{3}-\d{4}$/);
           });
 
-          employee.roles.forEach(function (role) {
+          employee.roles.forEach((role) => {
             expect(role).to.be.a("string").and.match(/^admin|employee|contractor|consultant|part time|full time|salaried|hourly$/);
           });
         });
       });
 
-      it("should have the correct paths to portrait images", function () {
-        employees.forEach(function (employee) {
+      it("should have the correct paths to portrait images", () => {
+        employees.forEach((employee) => {
           if (host.node) {
+            const path = require("path");
+            const fs = require("fs");
+
             if (isJSON) {
               expect(employee.portrait).not.to.satisfy(path.isAbsolute);
               expect(employee.thumbnail).not.to.satisfy(path.isAbsolute);
@@ -116,19 +135,19 @@ describe("employees", function () {
         });
       });
 
-      it("should not be terminated before being hired", function () {
-        employees.forEach(function (employee) {
-          if (employee.terminatedOn !== null) {
-            var hired = new Date(employee.hiredOn).getTime();
-            var terminated = new Date(employee.terminatedOn).getTime();
+      it("should not be terminated before being hired", () => {
+        employees.forEach((employee) => {
+          if (employee.terminatedOn) {
+            let hired = new Date(employee.hiredOn).getTime();
+            let terminated = new Date(employee.terminatedOn).getTime();
             expect(terminated).to.be.above(hired);
           }
         });
       });
 
-      it("should have roles that do not conflict with each other", function () {
-        employees.forEach(function (employee) {
-          employee.roles.forEach(function (role) {
+      it("should have roles that do not conflict with each other", () => {
+        employees.forEach((employee) => {
+          employee.roles.forEach((role) => {
             // Only the admin user has the "admin" role
             if (role === "admin") {
               expect(employee.username).to.equal("admin");
@@ -167,5 +186,5 @@ describe("employees", function () {
         });
       });
     });
-  });
+  }
 });

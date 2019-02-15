@@ -1,5 +1,5 @@
 Static mock data
-------------------------------
+==============================
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
 [![Build Status](https://api.travis-ci.com/JS-DevTools/static-mock-data.svg?branch=master)](https://travis-ci.com/JS-DevTools/static-mock-data)
@@ -9,16 +9,17 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![OS and Browser Compatibility](https://jsdevtools.org/img/badges/ci-badges-with-ie.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
+[![OS and Browser Compatibility](https://jsdevtools.org/img/badges/ci-badges.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
+
 
 
 Features
 --------------------------
-* __[100 mock employees](https://raw.githubusercontent.com/James-Mesinger/static-mock-data/master/employees.json)__, with names, addresses, phone numbers, etc.
-* __[100 mock projects](https://raw.githubusercontent.com/James-Mesinger/static-mock-data/master/projects.json)__, with names, dates, departments, employees assigned, etc.
+* __[100 mock employees](https://raw.githubusercontent.com/JS-DevTools/static-mock-data/master/employees.json)__, with names, addresses, phone numbers, etc.
+* __[100 mock projects](https://raw.githubusercontent.com/JS-DevTools/static-mock-data/master/projects.json)__, with names, dates, departments, employees assigned, etc.
 * __[Full-size](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe.jpg)__ and __[thumbnail](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe-thumb.jpg)__ photos for each employee
 * No dependencies
-* [Tested](https://jsdevtools.org/static-mock-data/test/) in Node.js and all modern web browsers on Mac, Windows, and Linux
+* [Tested](https://travis-ci.com/JS-DevTools/static-mock-data) in Node.js and all modern web browsers on Mac, Windows, and Linux
 * All data follows logical rules:
     - Usernames, SSNs, addresses, etc. are unique
     - Birthdates, hire dates, and termination dates are in proper chronological order
@@ -27,46 +28,45 @@ Features
     - Employees are only assigned to projects that occurred during their employment
 
 
-Usage in Node.js
+Installation
 -------------------------------------
-Install via [npm](https://docs.npmjs.com/about-npm/):
+Install using [NPM](https://docs.npmjs.com/about-npm/) or [Yarn](https://yarnpkg.com):
 
 ```bash
 npm install static-mock-data
 ```
 
-The mock data can be used as plain JSON or as JavaScript arrays of objects.
 
-##### Raw JSON
+Usage
+-------------------------------------
+The mock data can be used as plain JSON or as JavaScript objects.
+
+### Raw JSON
 ```javascript
-var employeeJSON = require('static-mock-data/employees.json');
-employeeJSON.forEach(function(employee) {
-  console.log(employee.dob);        // string (in ISO 8601 zulu format)
+const employees = require("static-mock-data/employees.json");
+
+for (let employee of employees) {
+  console.log(employee.dob);        // date string
   console.log(employee.portrait);   // relative file path
-});
+}
 ```
 
-##### JavaScript Objects
+### JavaScript Objects
 ```javascript
-var mockData = require('static-mock-data');
-mockData.employees.forEach(function(employee) {
+const mockData = require("static-mock-data");
+
+for (let employee of mockData.employees) {
   console.log(employee.dob);        // Date object
   console.log(employee.portrait);   // absolute file path
-});
+}
 ```
 
-Usage in Web Browsers
------------------------------------------
-Reference [`static-mock-data.js`](dist/static-mock-data.js) or [`static-mock-data.min.js`](dist/static-mock-data.min.js) in your HTML:
+### Browser support
+static-mock-data supports recent versions of every major web browser.  Older browsers may require [Babel](https://babeljs.io/) to transpile the code to older versions of JavaScript.
 
-```html
-<script src="https://cdn.rawgit.com/JS-DevTools/static-mock-data/master/dist/static-mock-data.js"></script>
-<script>
-  mock.data.employees.forEach(function(employee) {
-    console.log(employee.dob);    // Date object
-  });
-</script>
-```
+static-mock-data works with popular bundling tools such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Parcel](https://parceljs.org/), and [Browserify](http://browserify.org/). Some bundlers may require a bit of configuration, such as setting `browser: true` in [rollup-plugin-resolve](https://github.com/rollup/rollup-plugin-node-resolve).
+
+
 
 
 Employees
