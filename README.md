@@ -9,7 +9,8 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![OS and Browser Compatibility](https://jsdevtools.org/img/badges/ci-badges-with-ie.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
+[![OS and Browser Compatibility](https://jsdevtools.org/img/badges/ci-badges.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
+
 
 
 Features
@@ -55,18 +56,12 @@ mockData.employees.forEach((employee) => {
 });
 ```
 
-Usage in Web Browsers
------------------------------------------
-Reference [`static-mock-data.js`](dist/static-mock-data.js) or [`static-mock-data.min.js`](dist/static-mock-data.min.js) in your HTML:
+### Browser support
+static-mock-data supports recent versions of every major web browser.  Older browsers may require [Babel](https://babeljs.io/) to transpile the code to older versions of JavaScript.
 
-```html
-<script src="https://cdn.rawgit.com/JS-DevTools/static-mock-data/master/dist/static-mock-data.js"></script>
-<script>
-  mock.data.employees.forEach((employee) => {
-    console.log(employee.dob);    // Date object
-  });
-</script>
-```
+static-mock-data works with popular bundling tools such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Parcel](https://parceljs.org/), and [Browserify](http://browserify.org/). Some bundlers may require a bit of configuration, such as setting `browser: true` in [rollup-plugin-resolve](https://github.com/rollup/rollup-plugin-node-resolve).
+
+
 
 
 Employees

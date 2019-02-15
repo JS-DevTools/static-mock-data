@@ -7,7 +7,4 @@ const { karmaConfig } = require("karma-config");
 
 module.exports = karmaConfig({
   sourceDir: "esm",
-  browsers: {
-    ie: true,
-  }
 });
