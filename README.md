@@ -61,10 +61,13 @@ for (let employee of mockData.employees) {
 }
 ```
 
-### Browser support
-static-mock-data supports recent versions of every major web browser.  Older browsers may require [Babel](https://babeljs.io/) to transpile the code to older versions of JavaScript.
 
-static-mock-data works with popular bundling tools such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Parcel](https://parceljs.org/), and [Browserify](http://browserify.org/). Some bundlers may require a bit of configuration, such as setting `browser: true` in [rollup-plugin-resolve](https://github.com/rollup/rollup-plugin-node-resolve).
+
+Browser support
+--------------------------
+Static-mock-data supports recent versions of every major web browser.  Older browsers may require [Babel](https://babeljs.io/) and/or [polyfills](https://babeljs.io/docs/en/next/babel-polyfill).
+
+To use static-mock-data in a browser, you'll need to use a bundling tool such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Parcel](https://parceljs.org/), or [Browserify](http://browserify.org/). Some bundlers may require a bit of configuration, such as setting `browser: true` in [rollup-plugin-resolve](https://github.com/rollup/rollup-plugin-node-resolve).
 
 
 

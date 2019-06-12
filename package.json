@@ -27,8 +27,8 @@
   "module": "esm/index.js",
   "types": "esm/index.d.ts",
   "browser": {
-    "./cjs/node.js": "./cjs/browser.js",
-    "./esm/node.js": "./esm/browser.js"
+    "./cjs/isomorphic.node.js": "./cjs/isomorphic.browser.js",
+    "./esm/isomorphic.node.js": "./esm/isomorphic.browser.js"
   },
   "files": [
     "cjs",
@@ -47,7 +47,7 @@
     "build:cjs": "tsc --module commonjs --outDir cjs",
     "test": "npm run test:node && npm run test:browser && npm run lint",
     "test:node": "mocha",
-    "test:browser": "karma start --single-run=true",
+    "test:browser": "karma start --single-run",
     "coverage": "npm run coverage:node && npm run coverage:browser",
     "coverage:node": "nyc --reporter=text --reporter=lcov --report-dir coverage/node mocha",
     "coverage:browser": "npm run test:browser -- --coverage",

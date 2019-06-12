@@ -1,7 +1,7 @@
 // @ts-ignore - Prevent TypeScript from copying the JSON file to the output folder
 import jsonEmployees from "../employees.json";
 import { deepClone } from "./deep-clone";
-import { resolve } from "./node";
+import { resolve } from "./isomorphic.node";
 
 /**
  * An array of Employee objects. Unlike the raw JSON employee data,
