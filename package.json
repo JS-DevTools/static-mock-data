@@ -1,6 +1,6 @@
 {
   "name": "static-mock-data",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Static mock data for sample apps, demos, and POCs",
   "keywords": [
     "data",
@@ -52,7 +52,7 @@
     "coverage:node": "nyc --reporter=text --reporter=lcov --report-dir coverage/node mocha",
     "coverage:browser": "npm run test:browser -- --coverage",
     "upgrade": "npm-check -u",
-    "bump": "bump --prompt --tag --push --all",
+    "bump": "bump --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump"
   },
   "devDependencies": {
