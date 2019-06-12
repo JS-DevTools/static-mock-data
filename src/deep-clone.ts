@@ -1,4 +1,5 @@
-type ObjectOrArray = Record<string | number, unknown>;
+// tslint:disable-next-line: no-any
+type ObjectOrArray = Record<string | number, any>;
 
 /**
  * Deep-clones a JSON object or array.
