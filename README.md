@@ -9,7 +9,7 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![OS and Browser Compatibility](https://jsdevtools.org/img/badges/ci-badges.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
+[![OS and Browser Compatibility](https://jstools.dev/img/badges/ci-badges.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
 
 
 
@@ -149,6 +149,6 @@ Big Thanks To
 --------------------------
 Thanks to these awesome companies for their support of Open Source developers ❤
 
-[![Travis CI](https://jsdevtools.org/img/badges/travis-ci.svg)](https://travis-ci.com)
-[![SauceLabs](https://jsdevtools.org/img/badges/sauce-labs.svg)](https://saucelabs.com)
-[![Coveralls](https://jsdevtools.org/img/badges/coveralls.svg)](https://coveralls.io)
+[![Travis CI](https://jstools.dev/img/badges/travis-ci.svg)](https://travis-ci.com)
+[![SauceLabs](https://jstools.dev/img/badges/sauce-labs.svg)](https://saucelabs.com)
+[![Coveralls](https://jstools.dev/img/badges/coveralls.svg)](https://coveralls.io)
