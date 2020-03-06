@@ -42,7 +42,7 @@
     "lint": "npm run lint:typescript && npm run lint:javascript",
     "lint:typescript": "tslint -p tsconfig.json",
     "lint:javascript": "eslint test ./*.js",
-    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build": "npm run build:cjs && npm run build:esm",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir cjs",
     "test": "npm run test:node && npm run test:browser && npm run lint",
@@ -53,7 +53,7 @@
     "coverage:browser": "npm run test:browser -- --coverage",
     "upgrade": "npm-check -u && npm audit fix",
     "bump": "bump --tag --push --all",
-    "release": "npm run upgrade && npm run build && npm test && npm run bump"
+    "release": "npm run upgrade && npm run clean && npm run build && npm test && npm run bump"
   },
   "devDependencies": {
     "@jsdevtools/eslint-config-modular": "^8.0.0",
