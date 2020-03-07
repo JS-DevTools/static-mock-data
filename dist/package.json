@@ -1,0 +1,37 @@
+{
+  "name": "static-mock-data",
+  "version": "X.X.X",
+  "description": "Static mock data for sample apps, demos, and POCs",
+  "keywords": [
+    "data",
+    "mock",
+    "sample",
+    "samples",
+    "users",
+    "mock data",
+    "sample data",
+    "mock user data",
+    "sample user data"
+  ],
+  "author": {
+    "name": "James Messinger",
+    "url": "https://jamesmessinger.com"
+  },
+  "license": "(MIT OR CC-BY-NC-SA-4.0)",
+  "homepage": "https://jstools.dev/static-mock-data",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JS-DevTools/static-mock-data.git"
+  },
+  "main": "index.js",
+  "module": "index.mjs",
+  "typings": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.mjs",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@jsdevtools/static-mock-data": "X.X.X"
+  }
+}
