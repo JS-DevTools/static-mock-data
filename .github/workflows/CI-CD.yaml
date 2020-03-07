@@ -49,7 +49,7 @@ jobs:
       - name: Build the code
         run: npm run build
 
-      - name: Run Node tests
+      - name: Run tests
         run: npm run coverage:node
 
       - name: Send code coverage results to Coveralls
@@ -60,14 +60,8 @@ jobs:
 
   browser_tests:
     name: Browser Tests
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest     # Chrome, Firefox, Safari (via SauceLabs), Edge (via SauceLabs)
     timeout-minutes: 10
-    strategy:
-      fail-fast: true
-      matrix:
-        os:
-          - ubuntu-latest     # Chrome, Firefox, Safari (via SauceLabs), Edge (via SauceLabs)
-          - windows-latest    # Internet Explorer
 
     steps:
       - name: Checkout source
