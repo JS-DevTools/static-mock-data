@@ -3,12 +3,13 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "esModuleInterop": true,
+    "esModuleInterop": true,  // Required due to importing JSON files
     "lib": [
       "esnext",
       "dom"
     ],
 
+    "rootDir": "src",
     "outDir": "esm",
     "sourceMap": true,
     "declaration": true,
