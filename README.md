@@ -2,14 +2,14 @@ Static mock data
 ==============================
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
-[![Build Status](https://api.travis-ci.com/JS-DevTools/static-mock-data.svg?branch=master)](https://travis-ci.com/JS-DevTools/static-mock-data)
+[![Build Status](https://github.com/JS-DevTools/static-mock-data/workflows/CI-CD/badge.svg)](https://github.com/JS-DevTools/static-mock-data/blob/master/.github/workflows/CI-CD.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/static-mock-data)
 
 [![npm](https://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 [![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
 
-[![OS and Browser Compatibility](https://jstools.dev/img/badges/ci-badges.svg)](https://travis-ci.com/JS-DevTools/static-mock-data)
+[![OS and Browser Compatibility](https://jstools.dev/img/badges/ci-badges.svg)](https://github.com/JS-DevTools/static-mock-data/blob/master/.github/workflows/CI-CD.yaml)
 
 
 
@@ -19,7 +19,7 @@ Features
 * __[100 mock projects](https://raw.githubusercontent.com/JS-DevTools/static-mock-data/master/projects.json)__, with names, dates, departments, employees assigned, etc.
 * __[Full-size](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe.jpg)__ and __[thumbnail](https://github.com/JS-DevTools/static-mock-data/blob/master/portraits/jdoe-thumb.jpg)__ photos for each employee
 * No dependencies
-* [Tested](https://travis-ci.com/JS-DevTools/static-mock-data) in Node.js and all modern web browsers on Mac, Windows, and Linux
+* Tested in Node.js and all modern web browsers on Mac, Windows, and Linux
 * All data follows logical rules:
     - Usernames, SSNs, addresses, etc. are unique
     - Birthdates, hire dates, and termination dates are in proper chronological order
