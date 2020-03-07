@@ -5,9 +5,9 @@ Static mock data (as opposed to randomly-generated mock data) for sample apps, d
 [![Build Status](https://github.com/JS-DevTools/static-mock-data/workflows/CI-CD/badge.svg)](https://github.com/JS-DevTools/static-mock-data/blob/master/.github/workflows/CI-CD.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/static-mock-data)
 
-[![npm](https://img.shields.io/npm/v/static-mock-data.svg)](https://www.npmjs.com/package/static-mock-data)
+[![npm](https://img.shields.io/npm/v/@jsdevtools/static-mock-data.svg)](https://www.npmjs.com/package/@jsdevtools/static-mock-data)
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
-[![License](https://img.shields.io/npm/l/static-mock-data.svg)](LICENSE)
+[![License](https://img.shields.io/npm/l/@jsdevtools/static-mock-data.svg)](LICENSE)
 
 [![OS and Browser Compatibility](https://jstools.dev/img/badges/ci-badges.svg)](https://github.com/JS-DevTools/static-mock-data/blob/master/.github/workflows/CI-CD.yaml)
 
@@ -33,7 +33,7 @@ Installation
 Install using [NPM](https://docs.npmjs.com/about-npm/) or [Yarn](https://yarnpkg.com):
 
 ```bash
-npm install static-mock-data
+npm install @jsdevtools/static-mock-data
 ```
 
 
@@ -43,7 +43,7 @@ The mock data can be used as plain JSON or as JavaScript objects.
 
 ### Raw JSON
 ```javascript
-const employees = require("static-mock-data/employees.json");
+const employees = require("@jsdevtools/static-mock-data/employees.json");
 
 for (let employee of employees) {
   console.log(employee.dob);        // date string
@@ -53,7 +53,7 @@ for (let employee of employees) {
 
 ### JavaScript Objects
 ```javascript
-const mockData = require("static-mock-data");
+const mockData = require("@jsdevtools/static-mock-data");
 
 for (let employee of mockData.employees) {
   console.log(employee.dob);        // Date object
@@ -65,9 +65,9 @@ for (let employee of mockData.employees) {
 
 Browser support
 --------------------------
-Static-mock-data supports recent versions of every major web browser.  Older browsers may require [Babel](https://babeljs.io/) and/or [polyfills](https://babeljs.io/docs/en/next/babel-polyfill).
+Static Mock Data supports recent versions of every major web browser.  Older browsers may require [Babel](https://babeljs.io/) and/or [polyfills](https://babeljs.io/docs/en/next/babel-polyfill).
 
-To use static-mock-data in a browser, you'll need to use a bundling tool such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Parcel](https://parceljs.org/), or [Browserify](http://browserify.org/). Some bundlers may require a bit of configuration, such as setting `browser: true` in [rollup-plugin-resolve](https://github.com/rollup/rollup-plugin-node-resolve).
+To use Static Mock Data in a browser, you'll need to use a bundling tool such as [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/), [Parcel](https://parceljs.org/), or [Browserify](http://browserify.org/). Some bundlers may require a bit of configuration, such as setting `browser: true` in [rollup-plugin-resolve](https://github.com/rollup/rollup-plugin-node-resolve).
 
 
 
