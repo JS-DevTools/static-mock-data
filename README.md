@@ -28,6 +28,7 @@ Features
     - Employees are only assigned to projects that occurred during their employment
 
 
+
 Installation
 -------------------------------------
 Install using [NPM](https://docs.npmjs.com/about-npm/) or [Yarn](https://yarnpkg.com):
@@ -101,6 +102,7 @@ Employees
 | `roles`               | array of strings | Array of roles, such as "employee", "consultant", "part time", etc.
 
 
+
 Projects
 --------------------------
 `mockData.projects` is an array of objects with the following properties:
@@ -114,6 +116,7 @@ Projects
 | `startedOn`           | Date             | Date that the project started
 | `endedOn`             | Date or null     | Date that the project ended, or `null` if still ongoing
 | `assigned`            | array of strings | Array of usernames of employees who are assigned to the project. Projects will only have employees from the same department.
+
 
 
 Contributing
@@ -136,6 +139,7 @@ To build the project locally on your computer:
 `npm test`
 
 
+
 License
 --------------------------
 All JSON data is [MIT licensed](http://opensource.org/licenses/MIT) and can be used however you want.
@@ -143,6 +147,7 @@ All JSON data is [MIT licensed](http://opensource.org/licenses/MIT) and can be u
 All images (employee portraits) are licensed under [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/2.0/deed.en) and have some limitations on their use.
 
 See the [LICENSE file](LICENSE) for more details.
+
 
 
 Big Thanks To
