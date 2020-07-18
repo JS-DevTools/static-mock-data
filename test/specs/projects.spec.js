@@ -53,9 +53,9 @@ describe("projects", () => {
           expect(project.assigned).to.be.an("array").and.have.length.above(0);
 
           if (isJSON) {
-            expect(project.startedOn).to.be.a("string").and.not.empty;
+            expect(project.startedOn).to.be.a("string").with.length.of.at.least(1);
             if (project.endedOn !== null) {
-              expect(project.endedOn).to.be.a("string").and.not.empty;
+              expect(project.endedOn).to.be.a("string").with.length.of.at.least(1);
             }
           }
           else {
@@ -66,7 +66,7 @@ describe("projects", () => {
           }
 
           project.assigned.forEach((username) => {
-            expect(username).to.be.a("string").and.not.empty;
+            expect(username).to.be.a("string").with.length.of.at.least(1);
           });
         });
       });

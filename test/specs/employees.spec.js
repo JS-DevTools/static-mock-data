@@ -67,17 +67,17 @@ describe("employees", () => {
 
       it("should have valid data types for all fields", () => {
         employees.forEach((employee) => {
-          expect(employee.username).to.be.a("string").and.not.empty;
-          expect(employee.password).to.be.a("string").and.not.empty;
-          expect(employee.name.first).to.be.a("string").and.not.empty;
-          expect(employee.name.last).to.be.a("string").and.not.empty;
+          expect(employee.username).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.password).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.name.first).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.name.last).to.be.a("string").with.length.of.at.least(1);
           expect(employee.gender).to.be.a("string").and.match(/^male|female$/);
-          expect(employee.portrait).to.be.a("string").and.not.empty;
-          expect(employee.thumbnail).to.be.a("string").and.not.empty;
-          expect(employee.email).to.be.a("string").and.not.empty;
-          expect(employee.address.street).to.be.a("string").and.not.empty;
-          expect(employee.address.city).to.be.a("string").and.not.empty;
-          expect(employee.address.state).to.be.a("string").and.not.empty;
+          expect(employee.portrait).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.thumbnail).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.email).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.address.street).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.address.city).to.be.a("string").with.length.of.at.least(1);
+          expect(employee.address.state).to.be.a("string").with.length.of.at.least(1);
           expect(employee.address.zip).to.be.a("string").and.match(/^\d{5}$/);
           expect(employee.phones).to.be.an("array").and.have.length.above(0);
           expect(employee.ssn).to.be.a("string").and.match(/^\d{3}-\d{2}-\d{4}$/);
@@ -85,10 +85,10 @@ describe("employees", () => {
           expect(employee.roles).to.be.an("array").and.have.length.above(0);
 
           if (isJSON) {
-            expect(employee.dob).to.be.a("string").and.not.empty;
-            expect(employee.hiredOn).to.be.a("string").and.not.empty;
+            expect(employee.dob).to.be.a("string").with.length.of.at.least(1);
+            expect(employee.hiredOn).to.be.a("string").with.length.of.at.least(1);
             if (employee.terminatedOn) {
-              expect(employee.terminatedOn).to.be.a("string").and.not.empty;
+              expect(employee.terminatedOn).to.be.a("string").with.length.of.at.least(1);
             }
           }
           else {
@@ -125,8 +125,8 @@ describe("employees", () => {
               expect(employee.thumbnail).to.satisfy(path.isAbsolute);
             }
 
-            expect(fs.existsSync(employee.portrait)).to.be.true;
-            expect(fs.existsSync(employee.thumbnail)).to.be.true;
+            expect(fs.existsSync(employee.portrait)).to.equal(true);
+            expect(fs.existsSync(employee.thumbnail)).to.equal(true);
           }
           else {
             expect(employee.portrait).to.equal("portraits/" + employee.username + ".jpg");

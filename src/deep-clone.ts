@@ -1,10 +1,9 @@
-// tslint:disable-next-line: no-any
 type ObjectOrArray = Record<string | number, any>;
 
 /**
  * Deep-clones a JSON object or array.
  */
-export function deepClone<T extends ObjectOrArray>(obj: T): T  {
+export function deepClone<T extends ObjectOrArray>(obj: T): T {
   let clone: ObjectOrArray = Array.isArray(obj) ? [] : {};
 
   for (let key of Object.keys(obj)) {
