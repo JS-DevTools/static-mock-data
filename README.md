@@ -2,14 +2,14 @@ Static mock data
 ==============================
 Static mock data (as opposed to randomly-generated mock data) for sample apps, demos, and POCs.
 
-[![Build Status](https://github.com/JS-DevTools/static-mock-data/workflows/CI-CD/badge.svg)](https://github.com/JS-DevTools/static-mock-data/blob/master/.github/workflows/CI-CD.yaml)
+[![Build Status](https://github.com/JS-DevTools/static-mock-data/workflows/CI-CD/badge.svg)](https://github.com/JS-DevTools/static-mock-data/actions)
 [![Coverage Status](https://coveralls.io/repos/github/JS-DevTools/static-mock-data/badge.svg?branch=master)](https://coveralls.io/github/JS-DevTools/static-mock-data)
 
 [![npm](https://img.shields.io/npm/v/@jsdevtools/static-mock-data.svg)](https://www.npmjs.com/package/@jsdevtools/static-mock-data)
 [![Dependencies](https://david-dm.org/JS-DevTools/static-mock-data.svg)](https://david-dm.org/JS-DevTools/static-mock-data)
 [![License](https://img.shields.io/npm/l/@jsdevtools/static-mock-data.svg)](LICENSE)
 
-[![OS and Browser Compatibility](https://jstools.dev/img/badges/ci-badges.svg)](https://github.com/JS-DevTools/static-mock-data/blob/master/.github/workflows/CI-CD.yaml)
+[![OS and Browser Compatibility](https://jstools.dev/img/badges/ci-badges.svg)](https://github.com/JS-DevTools/static-mock-data/actions)
 
 
 
@@ -121,7 +121,7 @@ Projects
 
 Contributing
 --------------------------
-Contributions, enhancements, and bug-fixes are welcome!  [File an issue](https://github.com/JS-DevTools/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/JS-DevTools/static-mock-data/pulls).
+Contributions, enhancements, and bug-fixes are welcome!  [Open an issue](https://github.com/JS-DevTools/static-mock-data/issues) on GitHub and [submit a pull request](https://github.com/JS-DevTools/static-mock-data/pulls).
 
 #### Building
 To build the project locally on your computer:
